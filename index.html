@@ -13,169 +13,157 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body class="bg-[#07040d] text-gray-200 min-h-screen relative overflow-x-hidden flex flex-col justify-between antialiased font-['Plus_Jakarta_Sans']">
+<body class="text-gray-200 min-h-screen flex flex-col justify-between antialiased font-['Plus_Jakarta_Sans']">
 
-    <!-- Kinetic Background Atmosphere Layers -->
-    <div class="absolute top-[-10%] left-[5%] w-[500px] h-[500px] rounded-full bg-purple-900/20 glow-blob-1 pointer-events-none"></div>
-    <div class="absolute bottom-[10%] right-[5%] w-[600px] h-[600px] rounded-full bg-fuchsia-900/20 glow-blob-2 pointer-events-none"></div>
-
-    <!-- Header Navigation -->
-    <header class="w-full max-w-6xl mx-auto px-6 py-6 flex justify-between items-center relative z-20">
-        <div class="flex items-center gap-3 group cursor-pointer" onclick="resetToHome()">
-            <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-purple-500 to-fuchsia-600 flex items-center justify-center shadow-lg shadow-purple-500/20 group-hover:scale-105 transition-transform">
-                <i class="fa-solid fa-vault text-white text-lg"></i>
-            </div>
+    <!-- Top Navigation Header -->
+    <header class="w-full max-w-7xl mx-auto px-6 py-6 flex justify-between items-center relative z-20">
+        <div class="flex items-center gap-3 cursor-pointer" onclick="resetToHome()">
+            <!-- Custom Image Logo Rendered Here -->
+            <img src="https://i.ibb.co/q3gD2Cm9/6226284901146149931.jpg" alt="Logo" class="w-9 h-9 rounded-xl object-cover shadow-md shadow-purple-500/20 border border-purple-500/30">
             <div>
-                <h1 class="text-sm font-black uppercase tracking-wider text-white">Shivansh Playlists</h1>
-                <p class="text-[10px] font-bold text-purple-400 tracking-widest uppercase">Support Vault</p>
+                <h1 class="text-xs font-extrabold uppercase tracking-widest text-white">Shivansh Playlists</h1>
+                <p class="text-[9px] font-bold text-purple-400 tracking-wider uppercase opacity-80">Support Vault</p>
             </div>
         </div>
-        <button onclick="scrollToLeaderboard()" class="px-5 py-2 rounded-xl text-xs font-semibold tracking-wide bg-white/5 border border-white/10 hover:bg-white/10 text-white transition-all flex items-center gap-2 cursor-pointer">
-            <i class="fa-solid fa-trophy text-amber-400"></i> Standings
+        <button onclick="scrollToLeaderboard()" class="px-4 py-2 rounded-full text-[11px] font-semibold tracking-wide bg-white/5 border border-white/10 hover:bg-white/10 text-gray-300 transition-all cursor-pointer">
+            Leaderboard
         </button>
     </header>
 
-    <!-- Content Switcher Stage -->
-    <div class="w-full max-w-6xl mx-auto px-4 py-6 flex-grow flex items-center justify-center relative z-10">
+    <!-- Main View Switcher Stage -->
+    <div class="w-full max-w-5xl mx-auto px-6 py-4 flex-grow flex items-center justify-center relative z-10">
         
-        <!-- STATE 1: MAIN LANDING SCREEN -->
-        <main id="main-vault-stage" class="page-transition w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <!-- STATE 1: VAULT LANDING HUB -->
+        <main id="main-vault-stage" class="page-transition w-full flex flex-col items-center">
             
-            <!-- Left Data Insights Display -->
-            <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
-                <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-purple-500/10 border border-purple-500/20 text-xs font-bold text-purple-300 tracking-wide uppercase">
-                    <span class="w-2 h-2 rounded-full bg-purple-400 animate-ping"></span> Live Vault Updates Active
+            <!-- Centered Header Titles Layout -->
+            <div class="text-center max-w-2xl mx-auto mb-12 space-y-4">
+                <div class="inline-block px-3 py-1 rounded-full bg-white/5 border border-white/10 text-[10px] font-bold tracking-widest text-gray-400 uppercase">
+                    Daily Goal &middot; 50 Supporters
                 </div>
-                <h2 class="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight">
-                    Unlock today's drop for <span class="bg-gradient-to-r from-purple-400 via-fuchsia-400 to-indigo-400 bg-clip-text text-transparent text-neon-purple">Shivansh Playlists</span>
+                <h2 class="text-3xl md:text-5xl font-extrabold tracking-tight text-white leading-tight">
+                    Unlock today's drop for <br>
+                    <span class="bg-gradient-to-r from-purple-300 via-purple-100 to-fuchsia-300 bg-clip-text text-transparent glow-header">Shivansh Playlists</span>
                 </h2>
-                <p class="text-gray-400 text-sm md:text-base max-w-lg mx-auto lg:mx-0 leading-relaxed">
-                    Enter your dashboard tracking alias, hit support, and track your daily streaks live while raising the global vault bars[cite: 1]!
+                <p class="text-gray-400 text-xs md:text-sm max-w-md mx-auto leading-relaxed">
+                    One quick link keeps the channel going. Unlock it, get verified instantly, and watch your name climb the vault leaderboard.
                 </p>
-
-                <!-- Vault Dynamic Loading Trackers -->
-                <div class="flex flex-col sm:flex-row gap-6 justify-center lg:justify-start items-center pt-4">
-                    <div class="relative w-32 h-32 flex items-center justify-center">
-                        <svg class="w-full h-full">
-                            <circle cx="64" cy="64" r="54" stroke="rgba(255,255,255,0.02)" stroke-width="8" fill="transparent"/>
-                            <circle id="global-progress-circle" cx="64" cy="64" r="54" stroke="url(#accentGrad)" stroke-width="8" fill="transparent" stroke-dasharray="339.3" stroke-dashoffset="339.3" class="progress-svg-circle"/>
-                            <defs>
-                                <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                                    <stop offset="0%" stop-color="#c084fc" />
-                                    <stop offset="100%" stop-color="#db2777" />
-                                </linearGradient>
-                            </defs>
-                        </svg>
-                        <div class="absolute inset-0 flex flex-col items-center justify-center">
-                            <span id="global-count-display" class="text-2xl font-black text-white">0</span>
-                            <span class="text-[9px] font-bold tracking-widest uppercase text-gray-500 mt-0.5">Total Supports</span>
-                        </div>
-                    </div>
-                    <div class="text-center sm:text-left space-y-0.5">
-                        <p class="text-xs font-bold uppercase tracking-wider text-purple-400">Global Tracker Progress</p>
-                        <p class="text-lg font-bold text-white">Every Support Raises The Meter</p>
-                        <p class="text-xs text-gray-400">Real-time status tracking via local cache.</p>
-                    </div>
-                </div>
             </div>
 
-            <!-- Right Interactive Form Module -->
-            <div class="lg:col-span-5 w-full max-w-md mx-auto">
-                <div class="glass-panel p-8 rounded-3xl relative overflow-hidden">
-                    <h3 class="text-base font-bold text-white mb-6 flex items-center gap-2">
-                        <i class="fa-solid fa-circle-user text-purple-400"></i> Initialize Support Sequence
-                    </h3>
-                    
-                    <div class="space-y-4">
-                        <div class="space-y-1.5">
-                            <label class="text-[11px] font-bold text-gray-400 tracking-wider uppercase">Your Leaderboard Alias</label>
-                            <div class="relative">
-                                <span class="absolute inset-y-0 left-0 pl-4 flex items-center text-gray-500">
-                                    <i class="fa-regular fa-user"></i>
-                                </span>
-                                <input id="username-input" type="text" placeholder="Enter name..." class="w-full bg-white/[0.02] border border-white/10 rounded-xl py-3.5 pl-11 pr-4 text-white text-sm focus:outline-none focus:border-purple-500/50 focus:bg-white/[0.04] transition-all">
+            <!-- Two Column Counter & Form Block -->
+            <div class="w-full max-w-3xl grid grid-cols-1 md:grid-cols-12 gap-8 items-center justify-center">
+                
+                <!-- Left Section: Circular 0/50 Supporter Counter Diagram -->
+                <div class="md:col-span-5 flex justify-center">
+                    <div class="relative w-52 h-52 rounded-full bg-[#120924]/60 border border-purple-500/10 flex items-center justify-center shadow-inner">
+                        <svg class="w-full h-full absolute inset-0">
+                            <circle cx="104" cy="104" r="88" stroke="rgba(255,255,255,0.02)" stroke-width="6" fill="transparent"/>
+                            <circle id="global-progress-circle" cx="104" cy="104" r="88" stroke="#a855f7" stroke-width="6" fill="transparent" stroke-dasharray="552.9" stroke-dashoffset="552.9" class="progress-svg-circle"/>
+                        </svg>
+                        <div class="text-center z-10 space-y-1">
+                            <div class="w-8 h-8 rounded-full bg-white/5 mx-auto flex items-center justify-center mb-1 border border-white/10">
+                                <i class="fa-solid fa-lock text-xs text-purple-400/80"></i>
                             </div>
+                            <div>
+                                <span id="global-count-display" class="text-3xl font-black text-white tracking-tight">0</span>
+                                <span class="text-3xl font-black text-gray-600 tracking-tight">/50</span>
+                            </div>
+                            <p class="text-[9px] font-bold text-gray-500 tracking-widest uppercase">Supporters Today</p>
                         </div>
-
-                        <div id="alert-zone" class="hidden rounded-xl p-3.5 text-xs font-medium border items-start gap-2.5 transition-all"></div>
-
-                        <button onclick="executeSupportAction()" class="w-full py-4 rounded-xl bg-gradient-to-r from-purple-600 to-fuchsia-600 hover:from-purple-500 hover:to-fuchsia-500 text-white font-bold text-sm shadow-lg shadow-purple-600/10 hover:shadow-purple-500/20 active:scale-[0.99] transition-all cursor-pointer flex items-center justify-center gap-2">
-                            <i class="fa-solid fa-bolt text-amber-300"></i> Unlock & Support
-                        </button>
                     </div>
                 </div>
+
+                <!-- Right Section: User Action Form Container Card -->
+                <div class="md:col-span-7 w-full">
+                    <div class="glass-panel p-6 md:p-8 rounded-2xl relative">
+                        <div class="space-y-5">
+                            <div class="space-y-2">
+                                <label class="text-[10px] font-bold text-gray-400 tracking-widest uppercase block">Your Name For The Leaderboard</label>
+                                <input id="username-input" type="text" placeholder="rohan" class="w-full input-field rounded-xl py-3 px-4 text-white text-sm focus:outline-none">
+                            </div>
+
+                            <div id="alert-zone" class="hidden rounded-xl p-3 text-xs border items-center gap-2"></div>
+
+                            <button onclick="executeSupportAction()" class="w-full py-3.5 rounded-xl btn-primary-gradient text-white font-bold text-xs tracking-wider uppercase cursor-pointer flex items-center justify-center gap-2">
+                                <i class="fa-solid fa-plus text-[10px]"></i> Unlock & Support
+                            </button>
+                            
+                            <p class="text-[10px] text-center text-gray-500 leading-normal px-2">
+                                You'll complete a quick link, then land right back here — verified instantly, streak and rank updated automatically.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </main>
 
-        <!-- STATE 2: THANK YOU & LIVE STREAK PAGE -->
-        <main id="thank-you-stage" class="page-transition hidden w-full max-w-xl mx-auto text-center space-y-8">
-            <div class="w-20 h-20 rounded-full bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center mx-auto text-emerald-400 text-3xl animate-bounce">
-                <i class="fa-solid fa-circle-check"></i>
+        <!-- STATE 2: INTERACTIVE THANK YOU / STREAK DISPLAY STATE -->
+        <main id="thank-you-stage" class="page-transition hidden w-full max-w-md mx-auto text-center space-y-6">
+            <div class="w-16 h-16 rounded-full bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center mx-auto text-emerald-400 text-2xl animate-bounce">
+                <i class="fa-solid fa-check"></i>
             </div>
             
-            <div class="space-y-2">
-                <h2 class="text-3xl md:text-4xl font-extrabold text-white">Verification Confirmed!</h2>
-                <p class="text-gray-400 text-sm">Thank you for supporting <span class="text-purple-400 font-semibold">Shivansh Playlists</span>[cite: 1]!</p>
+            <div class="space-y-1">
+                <h2 class="text-2xl font-black text-white tracking-tight">Support Registered!</h2>
+                <p class="text-xs text-gray-400">Your custom daily drops have been successfully unlocked.</p>
             </div>
 
-            <!-- Individual Streak Dynamic Display Dashboard -->
-            <div class="glass-panel p-8 rounded-3xl grid grid-cols-2 gap-4 divide-x divide-white/5 relative overflow-hidden">
-                <div class="space-y-1 text-center">
-                    <p class="text-[10px] font-bold tracking-widest text-gray-500 uppercase">Your Total Supports</p>
-                    <p id="user-total-supports" class="text-4xl font-black text-white font-mono">0</p>
+            <!-- Dynamic Profile Metric Score Card Layout -->
+            <div class="glass-panel p-6 rounded-2xl grid grid-cols-2 gap-4 divide-x divide-white/5">
+                <div class="text-center space-y-1">
+                    <p class="text-[9px] font-bold tracking-widest text-gray-500 uppercase">Total Unlocks</p>
+                    <p id="user-total-supports" class="text-3xl font-black text-white font-mono">0</p>
                 </div>
-                <div class="space-y-1 text-center">
-                    <p class="text-[10px] font-bold tracking-widest text-purple-400 uppercase"><i class="fa-solid fa-fire text-orange-500"></i> Current Streak</p>
-                    <p id="user-current-streak" class="text-4xl font-black bg-gradient-to-r from-orange-400 to-amber-400 bg-clip-text text-transparent font-mono">0</p>
+                <div class="text-center space-y-1">
+                    <p class="text-[9px] font-bold tracking-widest text-orange-400 uppercase flex items-center justify-center gap-1">
+                        <i class="fa-solid fa-fire text-orange-500 animate-pulse"></i> Live Streak
+                    </p>
+                    <p id="user-current-streak" class="text-3xl font-black bg-gradient-to-r from-orange-400 to-amber-400 bg-clip-text text-transparent font-mono">0</p>
                 </div>
             </div>
 
-            <div class="flex gap-4 justify-center">
-                <button onclick="resetToHome()" class="px-6 py-3 rounded-xl text-xs font-bold bg-white/5 border border-white/10 hover:bg-white/10 text-white transition-all cursor-pointer">
-                    <i class="fa-solid fa-arrow-left mr-2"></i> Back to Vault
-                </button>
-            </div>
+            <button onclick="resetToHome()" class="px-5 py-2.5 rounded-xl text-xs font-bold bg-white/5 border border-white/10 hover:bg-white/10 text-white transition-all cursor-pointer">
+                <i class="fa-solid fa-chevron-left mr-1.5 text-[10px]"></i> Back to Hub
+            </button>
         </main>
     </div>
 
-    <!-- Leaderboard Standings Section -->
-    <section id="leaderboard-section" class="w-full max-w-4xl mx-auto px-4 py-12 relative z-20">
-        <div class="text-center mb-8 space-y-1">
-            <h3 class="text-xl font-bold tracking-tight text-white flex items-center justify-center gap-2">
-                <i class="fa-solid fa-crown text-amber-400"></i> Local Vault Leaderboard
-            </h3>
-            <p class="text-[11px] text-purple-400 font-medium tracking-wider uppercase">Live rankings based on submissions</p>
+    <!-- Leaderboard Standings Section Base Grid -->
+    <section id="leaderboard-section" class="w-full max-w-2xl mx-auto px-6 py-12 relative z-20">
+        <div class="mb-4">
+            <h3 class="text-lg font-extrabold tracking-tight text-white">Leaderboard</h3>
+            <p class="text-[11px] text-purple-400 font-medium">Ranked by total unlocks</p>
         </div>
 
-        <div class="glass-panel rounded-2xl overflow-hidden">
-            <div class="p-4 bg-white/[0.01] border-b border-white/5 grid grid-cols-12 text-[10px] font-bold uppercase tracking-wider text-gray-500 px-6">
-                <div class="col-span-2 text-center">Rank</div>
-                <div class="col-span-6">Supporter Name</div>
-                <div class="col-span-4 text-right">Total Contributions</div>
-            </div>
-            <div id="leaderboard-target" class="divide-y divide-white/5">
-                <!-- Javascript will inject data layers here -->
+        <!-- Leaderboard Glass Body Layout Row Elements -->
+        <div class="glass-panel rounded-xl overflow-hidden">
+            <div id="leaderboard-target" class="divide-y divide-white/[0.03]">
+                <!-- System injected rows display here dynamically -->
             </div>
         </div>
     </section>
 
-    <!-- Footer Area -->
-    <footer class="w-full py-6 text-center border-t border-white/5 relative z-20 text-[11px] text-gray-600">
-        Shivansh Playlists Support System &bull; Clean client-side performance module.
+    <!-- Page Structural Bottom Template Footer Label -->
+    <footer class="w-full py-6 text-center border-t border-white/5 relative z-20 text-[10px] text-gray-600">
+        Built by <span class="text-gray-500 font-medium">Shivansh Playlists</span> &middot; Support resets daily at midnight IST
     </footer>
 
-    <!-- Logic Controller Script -->
+    <!-- Frontend Local JavaScript Architecture Engine -->
     <script>
+        // Smooth view scroll management
         function scrollToLeaderboard() {
             document.getElementById('leaderboard-section').scrollIntoView({ behavior: 'smooth' });
         }
 
+        // Inline alert messaging rendering routines
         function showAlert(msg) {
             const el = document.getElementById('alert-zone');
-            el.className = "flex bg-red-500/10 border border-red-500/20 text-red-400 rounded-xl p-3.5 text-xs font-medium items-start gap-2.5";
-            el.innerHTML = `<i class="fa-solid fa-circle-exclamation mt-0.5"></i> <span>${msg}</span>`;
+            el.className = "flex bg-red-500/10 border border-red-500/20 text-red-400 rounded-xl p-3 text-xs font-medium items-center gap-2";
+            el.innerHTML = `<i class="fa-solid fa-circle-exclamation text-xs"></i> <span>${msg}</span>`;
         }
 
+        // Syncs total local counts to update the main circular meter fill ratios
         function syncGlobalMeters() {
             const participants = JSON.parse(localStorage.getItem('vault_participants') || '[]');
             const globalSupportsCount = participants.reduce((acc, curr) => acc + (curr.totalCount || 0), 0);
@@ -183,48 +171,54 @@
             document.getElementById('global-count-display').innerText = globalSupportsCount;
 
             const circle = document.getElementById('global-progress-circle');
-            const circumference = 54 * 2 * Math.PI;
+            const circumference = 88 * 2 * Math.PI;
             circle.style.strokeDasharray = `${circumference} ${circumference}`;
             
+            // Adjust calculation based on standard goal maximum parameter threshold levels
             const percent = Math.min((globalSupportsCount / 50) * 100, 100);
             circle.style.strokeDashoffset = circumference - (percent / 100) * circumference;
             
             renderLeaderboardView(participants);
         }
 
+        // Render matching rows inside local storage layout containers
         function renderLeaderboardView(users) {
             const container = document.getElementById('leaderboard-target');
             const sorted = [...users].sort((a,b) => b.totalCount - a.totalCount);
             
             if(sorted.length === 0) {
-                container.innerHTML = `<div class="p-8 text-center text-xs text-gray-500">No active supports recorded today.</div>`;
+                // Renders placeholder rows matching screenshot height spacing parameters cleanly
+                let placeholders = '';
+                for(let i=0; i<6; i++) {
+                    placeholders += `<div class="h-[52px] bg-white/[0.01]"></div>`;
+                }
+                container.innerHTML = placeholders;
                 return;
             }
 
             container.innerHTML = sorted.map((user, idx) => {
-                let badge = `<span class="text-gray-500 font-mono">${idx+1}</span>`;
-                if(idx === 0) badge = `<div class="w-5 h-5 rounded-full bg-amber-500/10 text-amber-400 flex items-center justify-center text-[10px] mx-auto"><i class="fa-solid fa-crown"></i></div>`;
-                if(idx === 1) badge = `<div class="w-5 h-5 rounded-full bg-slate-400/10 text-slate-300 flex items-center justify-center text-[10px] mx-auto"><i class="fa-solid fa-medal"></i></div>`;
-                
                 return `
-                    <div class="grid grid-cols-12 items-center text-xs py-4 px-6 hover:bg-white/[0.01] transition-colors">
-                        <div class="col-span-2 text-center">${badge}</div>
-                        <div class="col-span-6 font-semibold text-white flex items-center gap-2">
-                            ${user.name} 
-                            ${user.streak > 1 ? `<span class="text-[10px] bg-orange-500/10 text-orange-400 px-1.5 py-0.5 rounded font-bold"><i class="fa-solid fa-fire text-xs"></i> ${user.streak}</span>` : ''}
+                    <div class="flex items-center justify-between text-xs py-4 px-6 hover:bg-white/[0.01] transition-colors">
+                        <div class="flex items-center gap-4">
+                            <span class="text-gray-600 font-mono font-bold w-4">${idx + 1}</span>
+                            <span class="font-semibold text-white flex items-center gap-2">
+                                ${user.name} 
+                                ${user.streak > 1 ? `<span class="text-[9px] bg-orange-500/10 text-orange-400 px-1.5 py-0.5 rounded font-bold"><i class="fa-solid fa-fire text-[10px]"></i> ${user.streak}</span>` : ''}
+                            </span>
                         </div>
-                        <div class="col-span-4 text-right font-mono font-bold text-purple-400">${user.totalCount}</div>
+                        <div class="font-mono font-bold text-purple-400">${user.totalCount}</div>
                     </div>
                 `;
             }).join('');
         }
 
+        // Handles click submission workflows instantly
         function executeSupportAction() {
             const nameField = document.getElementById('username-input');
             const alias = nameField.value.trim();
 
             if(!alias) {
-                showAlert("Please fill in a profile tracking alias to proceed.");
+                showAlert("Please enter your name for the leaderboard.");
                 nameField.focus();
                 return;
             }
@@ -247,6 +241,7 @@
             localStorage.setItem('vault_participants', JSON.stringify(database));
             syncGlobalMeters();
 
+            // Populate personal metrics counters into the view components
             document.getElementById('user-total-supports').innerText = userRecord.totalCount;
             document.getElementById('user-current-streak').innerText = userRecord.streak;
 
@@ -263,6 +258,7 @@
             }, 400);
         }
 
+        // Resets display state back to home stage layouts cleanly
         function resetToHome() {
             const stage1 = document.getElementById('main-vault-stage');
             const stage2 = document.getElementById('thank-you-stage');
@@ -279,6 +275,7 @@
             }, 400);
         }
 
+        // Initialize state variables on page load
         window.addEventListener('DOMContentLoaded', syncGlobalMeters);
     </script>
 </body>
