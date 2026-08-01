@@ -253,6 +253,17 @@ a {
   }
 }
 
+@keyframes reveal-up {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .eyebrow {
   margin-bottom: 1.25rem;
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -264,6 +275,8 @@ a {
   text-transform: uppercase;
   letter-spacing: 0.2em;
   color: var(--orchid);
+  opacity: 0;
+  animation: reveal-up 0.7s ease-out 0.05s forwards;
 }
 
 .headline {
@@ -273,6 +286,8 @@ a {
   line-height: 1.12;
   font-size: 2.4rem;
   color: white;
+  opacity: 0;
+  animation: reveal-up 0.7s ease-out 0.15s forwards;
 }
 @media (min-width: 640px) {
   .headline {
@@ -290,6 +305,8 @@ a {
   margin: 1.25rem 0 0;
   font-size: 1rem;
   color: var(--mist);
+  opacity: 0;
+  animation: reveal-up 0.7s ease-out 0.28s forwards;
 }
 @media (min-width: 640px) {
   .subtitle {
@@ -319,6 +336,8 @@ a {
   width: 260px;
   height: 260px;
   flex-shrink: 0;
+  opacity: 0;
+  animation: reveal-up 0.8s ease-out 0.4s forwards;
 }
 
 .ring-glow {
