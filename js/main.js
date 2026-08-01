@@ -26,6 +26,7 @@
   };
 
   let prevGoalHit = false;
+  let statsErrorShown = false;
 
   const ICONS = {
     unlock:
@@ -52,6 +53,43 @@
 
   // ---------- helpers ----------
 
+  /**
+   * Fetch + parse JSON safely. If the server ever returns something that
+   * isn't JSON (an HTML error page from a failed deploy, a 404, etc.) this
+   * throws a clean, readable error instead of the raw
+   * "Unexpected token '<'... is not valid JSON" message.
+   */
+  async function safeFetchJson(url, options) {
+    const res = await fetch(url, options);
+    const contentType = res.headers.get("content-type") || "";
+
+    if (!contentType.includes("application/json")) {
+      throw new Error(
+        `Server returned an unexpected response (status ${res.status}). The API may not be deployed correctly.`
+      );
+    }
+
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.error || `Request failed (status ${res.status}).`);
+    return data;
+  }
+
+  function animateCount(el, from, to, duration = 700) {
+    if (from === to) {
+      el.textContent = to;
+      return;
+    }
+    const start = performance.now();
+    function tick(now) {
+      const progress = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3); // ease-out cubic
+      const value = Math.round(from + (to - from) * eased);
+      el.textContent = value;
+      if (progress < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
+
   function fireConfetti() {
     if (typeof confetti !== "function") return;
     const colors = ["#7C3AED", "#C084FC", "#E879F9", "#FBBF24"];
@@ -71,13 +109,16 @@
 
   // ---------- vault ring + stats ----------
 
+  let lastKnownCount = null;
+
   async function fetchStats() {
     try {
-      const res = await fetch("/api/stats", { cache: "no-store" });
-      const data = await res.json();
-      if (!res.ok) return;
+      const data = await safeFetchJson("/api/stats", { cache: "no-store" });
 
-      els.todayCount.textContent = data.todayCount;
+      const from = lastKnownCount === null ? data.todayCount : lastKnownCount;
+      animateCount(els.todayCount, from, data.todayCount);
+      lastKnownCount = data.todayCount;
+
       els.goalCount.textContent = data.goal;
       els.goalLabel.textContent = data.goal;
 
@@ -99,8 +140,11 @@
         els.pulseRings.classList.add("hidden");
       }
       prevGoalHit = Boolean(data.goalHit);
-    } catch {
-      // silent — next poll retries
+    } catch (err) {
+      if (!statsErrorShown) {
+        statsErrorShown = true;
+        showToast("error", err.message || "Could not load today's stats.");
+      }
     }
   }
 
@@ -165,12 +209,21 @@
 
   async function fetchLeaderboard() {
     try {
-      const res = await fetch("/api/leaderboard", { cache: "no-store" });
-      const data = await res.json();
-      if (res.ok) renderLeaderboard(data.leaderboard || []);
-    } catch {
-      // silent — next poll retries
+      const data = await safeFetchJson("/api/leaderboard", { cache: "no-store" });
+      renderLeaderboard(data.leaderboard || []);
+    } catch (err) {
+      renderLeaderboardError(err.message);
     }
+  }
+
+  function renderLeaderboardError(message) {
+    els.leaderboardList.innerHTML = "";
+    const li = document.createElement("li");
+    li.className = "lb-empty";
+    li.innerHTML = `<p>Couldn't load the leaderboard</p><p>${escapeHtml(
+      message || "Check your connection and try again."
+    )}</p>`;
+    els.leaderboardList.appendChild(li);
   }
 
   // ---------- support form ----------
@@ -200,14 +253,11 @@
     window.localStorage.setItem(STORAGE_KEY, username);
 
     try {
-      const res = await fetch("/api/support-start", {
+      const data = await safeFetchJson("/api/support-start", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username }),
       });
-      const data = await res.json();
-
-      if (!res.ok) throw new Error(data.error || "Could not start support.");
 
       window.location.href = data.redirectUrl;
     } catch (err) {
