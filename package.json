@@ -1,0 +1,9 @@
+{
+  "name": "shivansh-playlists-support",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Plain HTML/CSS/JS support vault for Shivansh Playlists, with Vercel serverless functions for Supabase + GPLinks.",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.45.4"
+  }
+}

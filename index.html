@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Shivansh Playlists — Unlock the Support Vault</title>
+<meta name="description" content="Support Shivansh Playlists by unlocking today's link. Hit the daily goal of 50 supporters, climb the leaderboard, and keep your streak alive." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;600;700;800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <div class="bg-orb orb-1"></div>
+  <div class="bg-orb orb-2"></div>
+
+  <div id="toast" class="toast hidden" role="status" aria-live="polite">
+    <span id="toast-icon" class="toast-icon"></span>
+    <p id="toast-message" class="toast-message"></p>
+    <button id="toast-close" class="toast-close" aria-label="Dismiss">&times;</button>
+  </div>
+
+  <header class="navbar">
+    <div class="brand">
+      <div class="brand-badge">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 2a5 5 0 0 0-5 5v3H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2h-1V7a5 5 0 0 0-5-5Zm-3 8V7a3 3 0 0 1 6 0v3H9Z" fill="white"/></svg>
+      </div>
+      <div class="brand-text">
+        <p class="brand-name">SHIVANSH PLAYLISTS</p>
+        <p class="brand-sub">Support Vault</p>
+      </div>
+    </div>
+    <a href="#leaderboard" class="nav-link">Leaderboard</a>
+  </header>
+
+  <main>
+    <section class="hero">
+      <span class="eyebrow">Daily goal · <span id="goal-label">50</span> supporters</span>
+
+      <h1 class="headline">
+        Unlock today&rsquo;s drop for <span class="shimmer">Shivansh Playlists</span>
+      </h1>
+
+      <p class="subtitle">
+        One quick link keeps the channel going. Unlock it, get verified instantly,
+        and watch your name climb the vault leaderboard.
+      </p>
+
+      <div class="hero-panels">
+
+        <!-- Vault ring: signature element -->
+        <div class="vault-ring-wrap">
+          <div class="ring-glow"></div>
+          <div id="pulse-rings" class="pulse-rings hidden">
+            <span class="pulse-ring"></span>
+            <span class="pulse-ring delay"></span>
+          </div>
+
+          <svg class="vault-ring" viewBox="0 0 260 260">
+            <circle class="ring-track" cx="130" cy="130" r="123" />
+            <circle id="ring-progress" class="ring-progress" cx="130" cy="130" r="123" />
+            <defs>
+              <linearGradient id="vaultGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#7C3AED" />
+                <stop offset="55%" stop-color="#C084FC" />
+                <stop id="gradient-end" offset="100%" stop-color="#E879F9" />
+              </linearGradient>
+            </defs>
+          </svg>
+
+          <div class="ring-center">
+            <div id="lock-badge" class="lock-badge">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 2a5 5 0 0 0-5 5v3H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2h-1V7a5 5 0 0 0-5-5Zm-3 8V7a3 3 0 0 1 6 0v3H9Z" fill="currentColor"/></svg>
+            </div>
+            <span class="ring-count"><span id="today-count">0</span><span class="ring-count-goal">/<span id="goal-count">50</span></span></span>
+            <span id="ring-label" class="ring-label">Supporters today</span>
+          </div>
+        </div>
+
+        <!-- Support form -->
+        <form id="support-form" class="support-panel">
+          <label for="username" class="field-label">Your name for the leaderboard</label>
+          <input id="username" type="text" placeholder="e.g. Rohan" maxlength="24" autocomplete="off" />
+
+          <p id="form-error" class="form-error hidden"></p>
+
+          <button type="submit" id="support-btn" class="support-btn">
+            <span id="btn-icon" class="btn-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 2 9.5 8.5 3 11l6.5 2.5L12 20l2.5-6.5L21 11l-6.5-2.5L12 2Z" fill="currentColor"/></svg>
+            </span>
+            <span id="btn-text">Unlock &amp; Support</span>
+          </button>
+
+          <p class="hint">
+            You&rsquo;ll complete a quick link, then land right back here — verified
+            instantly, streak and rank updated automatically.
+          </p>
+        </form>
+
+      </div>
+    </section>
+
+    <section id="leaderboard" class="leaderboard-section">
+      <div class="section-header">
+        <div>
+          <h2>Leaderboard</h2>
+          <p>Ranked by total unlocks</p>
+        </div>
+      </div>
+
+      <ol id="leaderboard-list" class="leaderboard-list"></ol>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Built by <span class="footer-brand">Shivansh Playlists</span> · Support resets daily at midnight IST</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
