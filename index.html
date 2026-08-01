@@ -1,125 +1,314 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Shivansh Playlists — Unlock the Support Vault</title>
-<meta name="description" content="Support Shivansh Playlists by unlocking today's link. Hit the daily goal of 50 supporters, climb the leaderboard, and keep your streak alive." />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shivansh Playlists | Support Vault</title>
+    <!-- Tailwind CSS Engine -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- FontAwesome for Premium Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts Integration -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #0b0713;
+            overflow-x: hidden;
+        }
 
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;600;700;800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+        /* Fluid Layered Ambient Glow Animations */
+        .glow-blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(130px);
+            opacity: 0.35;
+            z-index: 0;
+            pointer-events: none;
+            animate: float-blob 14s infinite alternate ease-in-out;
+        }
+        @keyframes float-blob {
+            0% { transform: translate(0px, 0px) scale(1); }
+            50% { transform: translate(50px, -70px) scale(1.2); }
+            100% { transform: translate(-30px, 30px) scale(0.9); }
+        }
 
-<link rel="stylesheet" href="css/style.css" />
+        /* Non-blocking radial transition handles */
+        .progress-ring-circle {
+            transition: stroke-dashoffset 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: rotate(-90deg);
+            transform-origin: 50% 50%;
+        }
+
+        /* Glassmorphic Container Overlays */
+        .glass-card {
+            background: rgba(22, 16, 36, 0.65);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .glass-card:hover {
+            border-color: rgba(168, 85, 247, 0.4);
+            box-shadow: 0 20px 40px -5px rgba(168, 85, 247, 0.2);
+            transform: translateY(-5px);
+        }
+
+        /* Custom minimal scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #0b0713; }
+        ::-webkit-scrollbar-thumb { background: #3b2856; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #523778; }
+    </style>
 </head>
-<body>
+<body class="text-gray-200 min-h-screen relative flex flex-col justify-between antialiased selection:bg-purple-500 selection:text-white">
 
-  <div class="bg-orb orb-1"></div>
-  <div class="bg-orb orb-2"></div>
+    <!-- Ambient Glowing Blobs -->
+    <div class="glow-blob bg-purple-600 w-96 h-96 top-10 left-1/4"></div>
+    <div class="glow-blob bg-fuchsia-600 w-80 h-80 top-1/3 right-1/4" style="animation-delay: -4s;"></div>
+    <div class="glow-blob bg-indigo-600 w-96 h-96 bottom-10 left-1/3" style="animation-delay: -8s;"></div>
 
-  <div id="toast" class="toast hidden" role="status" aria-live="polite">
-    <span id="toast-icon" class="toast-icon"></span>
-    <p id="toast-message" class="toast-message"></p>
-    <button id="toast-close" class="toast-close" aria-label="Dismiss">&times;</button>
-  </div>
-
-  <header class="navbar">
-    <div class="brand">
-      <div class="brand-badge">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 2a5 5 0 0 0-5 5v3H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2h-1V7a5 5 0 0 0-5-5Zm-3 8V7a3 3 0 0 1 6 0v3H9Z" fill="white"/></svg>
-      </div>
-      <div class="brand-text">
-        <p class="brand-name">SHIVANSH PLAYLISTS</p>
-        <p class="brand-sub">Support Vault</p>
-      </div>
-    </div>
-    <a href="#leaderboard" class="nav-link">Leaderboard</a>
-  </header>
-
-  <main>
-    <section class="hero">
-      <span class="eyebrow">Daily goal · <span id="goal-label">50</span> supporters</span>
-
-      <h1 class="headline">
-        Unlock today&rsquo;s drop for <span class="shimmer">Shivansh Playlists</span>
-      </h1>
-
-      <p class="subtitle">
-        One quick link keeps the channel going. Unlock it, get verified instantly,
-        and watch your name climb the vault leaderboard.
-      </p>
-
-      <div class="hero-panels">
-
-        <!-- Vault ring: signature element -->
-        <div class="vault-ring-wrap">
-          <div class="ring-glow"></div>
-          <div id="pulse-rings" class="pulse-rings hidden">
-            <span class="pulse-ring"></span>
-            <span class="pulse-ring delay"></span>
-          </div>
-
-          <svg class="vault-ring" viewBox="0 0 260 260">
-            <circle class="ring-track" cx="130" cy="130" r="123" />
-            <circle id="ring-progress" class="ring-progress" cx="130" cy="130" r="123" />
-            <defs>
-              <linearGradient id="vaultGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#7C3AED" />
-                <stop offset="55%" stop-color="#C084FC" />
-                <stop id="gradient-end" offset="100%" stop-color="#E879F9" />
-              </linearGradient>
-            </defs>
-          </svg>
-
-          <div class="ring-center">
-            <div id="lock-badge" class="lock-badge">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 2a5 5 0 0 0-5 5v3H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2h-1V7a5 5 0 0 0-5-5Zm-3 8V7a3 3 0 0 1 6 0v3H9Z" fill="currentColor"/></svg>
+    <!-- Navigation Header -->
+    <header class="w-full max-w-6xl mx-auto px-6 py-6 flex justify-between items-center relative z-10">
+        <div class="flex items-center gap-3 group cursor-pointer">
+            <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-purple-500 to-fuchsia-600 flex items-center justify-center shadow-lg shadow-purple-500/20 group-hover:scale-110 transition-transform duration-300">
+                <i class="fa-solid fa-vault text-white text-lg"></i>
             </div>
-            <span class="ring-count"><span id="today-count">0</span><span class="ring-count-goal">/<span id="goal-count">50</span></span></span>
-            <span id="ring-label" class="ring-label">Supporters today</span>
-          </div>
+            <div>
+                <h1 class="text-sm font-black uppercase tracking-wider text-white">Shivansh Playlists</h1>
+                <p class="text-[10px] font-bold text-purple-400 tracking-widest uppercase">Support Vault</p>
+            </div>
+        </div>
+        <button onclick="scrollToLeaderboard()" class="px-5 py-2 rounded-xl text-xs font-semibold tracking-wide bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 text-white transition-all duration-300 flex items-center gap-2 group cursor-pointer">
+            <i class="fa-solid fa-trophy text-amber-400 group-hover:rotate-12 transition-transform"></i> Leaderboard
+        </button>
+    </header>
+
+    <!-- Interactive Vault Stage Area -->
+    <main class="w-full max-w-5xl mx-auto px-4 py-8 relative z-10 flex-grow grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        
+        <!-- Interactive Value Segment -->
+        <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-purple-500/10 border border-purple-500/20 text-xs font-bold text-purple-300 tracking-wide uppercase animate-pulse">
+                <span class="w-2 h-2 rounded-full bg-purple-400"></span> Daily Goal • 50 Supporters
+            </div>
+            <h2 class="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight">
+                Unlock today's drop for <span class="bg-gradient-to-r from-purple-400 via-fuchsia-400 to-indigo-400 bg-clip-text text-transparent">Shivansh Playlists</span>
+            </h2>
+            <p class="text-gray-400 text-sm md:text-base max-w-lg mx-auto lg:mx-0 leading-relaxed">
+                One quick link keeps the channel going strong. Unlock it, get verified instantly, and watch your name climb the vault leaderboard.
+            </p>
+
+            <!-- Dynamic Animated Radial Counters -->
+            <div class="flex flex-col sm:flex-row gap-6 justify-center lg:justify-start items-center pt-4">
+                <div class="relative w-32 h-32 flex items-center justify-center">
+                    <svg class="w-full h-full transform -rotate-90">
+                        <circle cx="64" cy="64" r="54" stroke="rgba(255,255,255,0.03)" stroke-width="8" fill="transparent"/>
+                        <circle id="progress-circle" cx="64" cy="64" r="54" stroke="url(#purpleGradient)" stroke-width="8" fill="transparent" stroke-dasharray="339.3" stroke-dashoffset="339.3" class="progress-ring-circle"/>
+                        <defs>
+                            <linearGradient id="purpleGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#a855f7" />
+                                <stop offset="100%" stop-color="#ec4899" />
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                    <div class="absolute inset-0 flex flex-col items-center justify-center">
+                        <span id="supporter-count" class="text-2xl font-black text-white leading-none">0</span>
+                        <span class="text-[9px] font-bold tracking-widest uppercase text-gray-500 mt-1">Goal/50</span>
+                    </div>
+                </div>
+                <div class="text-center sm:text-left space-y-1">
+                    <p class="text-xs font-bold uppercase tracking-wider text-purple-300">Vault Unlock Progress</p>
+                    <p class="text-xl font-bold text-white">Join Today's Wave</p>
+                    <p class="text-xs text-gray-400">Resets daily at midnight IST to keep rankings dynamic.</p>
+                </div>
+            </div>
         </div>
 
-        <!-- Support form -->
-        <form id="support-form" class="support-panel">
-          <label for="username" class="field-label">Your name for the leaderboard</label>
-          <input id="username" type="text" placeholder="e.g. Rohan" maxlength="24" autocomplete="off" />
+        <!-- Glassmorphic Input Box Container -->
+        <div class="lg:col-span-5 w-full max-w-md mx-auto">
+            <div class="glass-card p-8 rounded-3xl relative overflow-hidden">
+                <div class="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-purple-500 to-transparent"></div>
+                
+                <h3 class="text-lg font-bold text-white mb-6 flex items-center gap-2">
+                    <i class="fa-solid fa-feather-pointed text-purple-400"></i> Enter The Leaderboard
+                </h3>
+                
+                <div class="space-y-5">
+                    <div class="space-y-2">
+                        <label class="text-xs font-bold text-gray-400 tracking-wide uppercase">Your Display Name</label>
+                        <div class="relative">
+                            <span class="absolute inset-y-0 left-0 pl-4 flex items-center text-gray-500">
+                                <i class="fa-regular fa-user"></i>
+                            </span>
+                            <input id="username" type="text" placeholder="Enter name for leaderboard..." class="w-full bg-white/[0.03] border border-white/10 rounded-xl py-3.5 pl-11 pr-4 text-white text-sm placeholder-gray-600 focus:outline-none focus:border-purple-500/60 focus:bg-white/[0.05] transition-all duration-300">
+                        </div>
+                    </div>
 
-          <p id="form-error" class="form-error hidden"></p>
+                    <!-- Custom Elegant Alerts Message Target -->
+                    <div id="status-message" class="hidden rounded-xl p-3.5 text-xs font-medium border items-start gap-3 transition-all duration-300"></div>
 
-          <button type="submit" id="support-btn" class="support-btn">
-            <span id="btn-icon" class="btn-icon">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 2 9.5 8.5 3 11l6.5 2.5L12 20l2.5-6.5L21 11l-6.5-2.5L12 2Z" fill="currentColor"/></svg>
-            </span>
-            <span id="btn-text">Unlock &amp; Support</span>
-          </button>
-
-          <p class="hint">
-            You&rsquo;ll complete a quick link, then land right back here — verified
-            instantly, streak and rank updated automatically.
-          </p>
-        </form>
-
-      </div>
-    </section>
-
-    <section id="leaderboard" class="leaderboard-section">
-      <div class="section-header">
-        <div>
-          <h2>Leaderboard</h2>
-          <p>Ranked by total unlocks</p>
+                    <button id="unlock-btn" onclick="handleUnlockSupport()" class="w-full relative group overflow-hidden bg-gradient-to-r from-purple-600 to-fuchsia-600 hover:from-purple-500 hover:to-fuchsia-500 text-white font-bold text-sm py-4 rounded-xl shadow-lg shadow-purple-600/20 transition-all duration-300 transform active:scale-[0.98] cursor-pointer flex items-center justify-center gap-2">
+                        <span id="btn-text" class="relative z-10 flex items-center gap-2">
+                            <i class="fa-solid fa-bolt text-amber-300 animate-bounce"></i> Unlock & Support
+                        </span>
+                    </button>
+                    
+                    <p class="text-[11px] text-center text-gray-500 leading-relaxed">
+                        Complete one quick link to get verified instantly. Your personal streak and ranking update automatically.
+                    </p>
+                </div>
+            </div>
         </div>
-      </div>
+    </main>
 
-      <ol id="leaderboard-list" class="leaderboard-list"></ol>
+    <!-- Leaderboard Listing Section -->
+    <section id="leaderboard-section" class="w-full max-w-4xl mx-auto px-4 py-16 relative z-10">
+        <div class="text-center mb-10 space-y-2">
+            <h3 class="text-2xl font-black tracking-tight text-white flex items-center justify-center gap-2">
+                <i class="fa-solid fa-crown text-amber-400"></i> Top Vault Supporters
+            </h3>
+            <p class="text-xs text-purple-400 tracking-wider font-semibold uppercase">Ranked by Total Unlocks</p>
+        </div>
+
+        <div class="glass-card rounded-2xl overflow-hidden">
+            <div class="p-4 bg-white/[0.02] border-b border-white/5 grid grid-cols-12 text-xs font-bold uppercase tracking-wider text-gray-500 px-6">
+                <div class="col-span-2 text-center">Rank</div>
+                <div class="col-span-6">Supporter</div>
+                <div class="col-span-4 text-right">Total Supports</div>
+            </div>
+            
+            <div id="leaderboard-rows" class="divide-y divide-white/5">
+                <div class="p-6 text-center text-sm text-gray-500">
+                    <i class="fa-solid fa-spinner animate-spin text-purple-500 mr-2"></i> Fetching leaderboard standings...
+                </div>
+            </div>
+        </div>
     </section>
-  </main>
 
-  <footer class="site-footer">
-    <p>Built by <span class="footer-brand">Shivansh Playlists</span> · Support resets daily at midnight IST</p>
-  </footer>
+    <!-- Footer -->
+    <footer class="w-full py-6 text-center border-t border-white/5 relative z-10 text-[11px] text-gray-600">
+        Built for <span class="text-gray-400 font-medium">Shivansh Playlists</span> &bull; Support resets daily at midnight IST.
+    </footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
-  <script src="js/main.js"></script>
+    <!-- Execution Script -->
+    <script>
+        function scrollToLeaderboard() {
+            document.getElementById('leaderboard-section').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function setProgress(current) {
+            const circle = document.getElementById('progress-circle');
+            const radius = circle.r.baseVal.value;
+            const circumference = radius * 2 * Math.PI;
+            
+            circle.style.strokeDasharray = `${circumference} ${circumference}`;
+            const percentage = Math.min((current / 50) * 100, 100);
+            circle.style.strokeDashoffset = circumference - (percentage / 100) * circumference;
+            
+            document.getElementById('supporter-count').innerText = current;
+        }
+
+        function showMessage(text, type = 'error') {
+            const box = document.getElementById('status-message');
+            box.className = "rounded-xl p-3.5 text-xs font-medium border items-start gap-3 transition-all duration-300 ";
+            
+            if (type === 'error') {
+                box.classList.add('flex', 'bg-red-500/10', 'border-red-500/20', 'text-red-400');
+                box.innerHTML = `<i class="fa-solid fa-circle-exclamation mt-0.5"></i> <span>${text}</span>`;
+            } else {
+                box.classList.add('flex', 'bg-emerald-500/10', 'border-emerald-500/20', 'text-emerald-400');
+                box.innerHTML = `<i class="fa-solid fa-circle-check mt-0.5"></i> <span>${text}</span>`;
+            }
+        }
+
+        async function fetchVaultData() {
+            try {
+                const statsRes = await fetch('/api/stats');
+                if (statsRes.ok) {
+                    const stats = await statsRes.json();
+                    setProgress(stats.todaySupporters || 0);
+                }
+
+                const lbRes = await fetch('/api/leaderboard');
+                if (lbRes.ok) {
+                    const data = await lbRes.json();
+                    renderLeaderboard(data.leaderboard || []);
+                }
+            } catch (err) {
+                console.error("Gracefully fall back to demo display context: ", err);
+                setProgress(24);
+                renderLeaderboard([
+                    { name: 'Rohan', count: 38 },
+                    { name: 'Sanju', count: 29 },
+                    { name: 'Yash', count: 21 },
+                    { name: 'Kirito', count: 14 }
+                ]);
+            }
+        }
+
+        function renderLeaderboard(list) {
+            const container = document.getElementById('leaderboard-rows');
+            if (list.length === 0) {
+                container.innerHTML = `<div class="p-8 text-center text-xs text-gray-500">No supporters yet today.</div>`;
+                return;
+            }
+            
+            container.innerHTML = list.map((user, index) => {
+                let rankBadge = `<span class="text-gray-400 font-bold">${index + 1}</span>`;
+                if(index === 0) rankBadge = `<div class="w-6 h-6 rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center mx-auto text-xs"><i class="fa-solid fa-crown"></i></div>`;
+                if(index === 1) rankBadge = `<div class="w-6 h-6 rounded-full bg-slate-400/20 text-slate-300 flex items-center justify-center mx-auto text-xs"><i class="fa-solid fa-medal"></i></div>`;
+                if(index === 2) rankBadge = `<div class="w-6 h-6 rounded-full bg-amber-700/20 text-amber-600 flex items-center justify-center mx-auto text-xs"><i class="fa-solid fa-medal"></i></div>`;
+
+                return `
+                    <div class="grid grid-cols-12 items-center text-sm py-4 px-6 hover:bg-white/[0.02] transition-colors duration-200">
+                        <div class="col-span-2 text-center">${rankBadge}</div>
+                        <div class="col-span-6 font-semibold text-white">${user.name}</div>
+                        <div class="col-span-4 text-right font-mono text-purple-400 font-bold">${user.count}</div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        async function handleUnlockSupport() {
+            const nameInput = document.getElementById('username');
+            const name = nameInput.value.trim();
+            const btnText = document.getElementById('btn-text');
+            
+            if (!name) {
+                showMessage("Please enter a name to join the leaderboard ranking.");
+                nameInput.focus();
+                return;
+            }
+
+            btnText.innerHTML = `<i class="fa-solid fa-circle-notch animate-spin text-white"></i> Securing custom link...`;
+            
+            try {
+                const response = await fetch('/api/support-start', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ name })
+                });
+
+                const result = await response.json();
+                
+                if (response.ok && result.link) {
+                    showMessage("Link generated! Redirecting to secure verification...", "success");
+                    setTimeout(() => { window.location.href = result.link; }, 1000);
+                } else {
+                    showMessage(result.error || "An error occurred. Please try again.");
+                    btnText.innerHTML = `<i class="fa-solid fa-bolt text-amber-300"></i> Retry Unlock & Support`;
+                }
+            } catch (err) {
+                showMessage("Server unreachable. Verify your serverless backend configurations are accurate.");
+                btnText.innerHTML = `<i class="fa-solid fa-bolt text-amber-300"></i> Retry Unlock & Support`;
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', fetchVaultData);
+    </script>
 </body>
 </html>
