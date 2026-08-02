@@ -4,22 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shivansh Playlists | Support Vault</title>
-    <!-- Tailwind Engine -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <!-- Icons and Fonts -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body class="text-gray-200 min-h-screen flex flex-col justify-between antialiased font-['Plus_Jakarta_Sans']">
 
-    <!-- Top Navigation Header -->
     <header class="w-full max-w-7xl mx-auto px-6 py-6 flex justify-between items-center relative z-20">
-        <div class="flex items-center gap-3 cursor-pointer" onclick="resetToHome()">
-            <!-- Custom Image Logo Rendered Here -->
-            <img src="https://i.ibb.co/q3gD2Cm9/6226284901146149931.jpg" alt="Logo" class="w-9 h-9 rounded-xl object-cover shadow-md shadow-purple-500/20 border border-purple-500/30">
+        <div class="flex items-center gap-3 cursor-pointer" onclick="location.reload()">
+            <img src="https://i.ibb.co/q3gD2Cm9/6226284901146149931.jpg" alt="Logo" class="w-9 h-9 rounded-xl object-cover border border-purple-500/30">
             <div>
                 <h1 class="text-xs font-extrabold uppercase tracking-widest text-white">Shivansh Playlists</h1>
                 <p class="text-[9px] font-bold text-purple-400 tracking-wider uppercase opacity-80">Support Vault</p>
@@ -30,13 +24,9 @@
         </button>
     </header>
 
-    <!-- Main View Switcher Stage -->
     <div class="w-full max-w-5xl mx-auto px-6 py-4 flex-grow flex items-center justify-center relative z-10">
-        
-        <!-- STATE 1: VAULT LANDING HUB -->
-        <main id="main-vault-stage" class="page-transition w-full flex flex-col items-center">
+        <main class="w-full flex flex-col items-center">
             
-            <!-- Centered Header Titles Layout -->
             <div class="text-center max-w-2xl mx-auto mb-12 space-y-4">
                 <div class="inline-block px-3 py-1 rounded-full bg-white/5 border border-white/10 text-[10px] font-bold tracking-widest text-gray-400 uppercase">
                     Daily Goal &middot; 50 Supporters
@@ -50,10 +40,8 @@
                 </p>
             </div>
 
-            <!-- Two Column Counter & Form Block -->
             <div class="w-full max-w-3xl grid grid-cols-1 md:grid-cols-12 gap-8 items-center justify-center">
                 
-                <!-- Left Section: Circular 0/50 Supporter Counter Diagram -->
                 <div class="md:col-span-5 flex justify-center">
                     <div class="relative w-52 h-52 rounded-full bg-[#120924]/60 border border-purple-500/10 flex items-center justify-center shadow-inner">
                         <svg class="w-full h-full absolute inset-0">
@@ -73,7 +61,6 @@
                     </div>
                 </div>
 
-                <!-- Right Section: User Action Form Container Card -->
                 <div class="md:col-span-7 w-full">
                     <div class="glass-panel p-6 md:p-8 rounded-2xl relative">
                         <div class="space-y-5">
@@ -84,12 +71,12 @@
 
                             <div id="alert-zone" class="hidden rounded-xl p-3 text-xs border items-center gap-2"></div>
 
-                            <button onclick="executeSupportAction()" class="w-full py-3.5 rounded-xl btn-primary-gradient text-white font-bold text-xs tracking-wider uppercase cursor-pointer flex items-center justify-center gap-2">
-                                <i class="fa-solid fa-plus text-[10px]"></i> Unlock & Support
+                            <button onclick="redirectToGPLink()" class="w-full py-3.5 rounded-xl btn-primary-gradient text-white font-bold text-xs tracking-wider uppercase cursor-pointer flex items-center justify-center gap-2">
+                                <i class="fa-solid fa-bolt text-[11px] text-amber-300"></i> Unlock & Support
                             </button>
                             
                             <p class="text-[10px] text-center text-gray-500 leading-normal px-2">
-                                You'll complete a quick link, then land right back here — verified instantly, streak and rank updated automatically.
+                                You'll complete a quick link, then land automatically right onto the verification dashboard to claim your streak.
                             </p>
                         </div>
                     </div>
@@ -97,73 +84,37 @@
 
             </div>
         </main>
-
-        <!-- STATE 2: INTERACTIVE THANK YOU / STREAK DISPLAY STATE -->
-        <main id="thank-you-stage" class="page-transition hidden w-full max-w-md mx-auto text-center space-y-6">
-            <div class="w-16 h-16 rounded-full bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center mx-auto text-emerald-400 text-2xl animate-bounce">
-                <i class="fa-solid fa-check"></i>
-            </div>
-            
-            <div class="space-y-1">
-                <h2 class="text-2xl font-black text-white tracking-tight">Support Registered!</h2>
-                <p class="text-xs text-gray-400">Your custom daily drops have been successfully unlocked.</p>
-            </div>
-
-            <!-- Dynamic Profile Metric Score Card Layout -->
-            <div class="glass-panel p-6 rounded-2xl grid grid-cols-2 gap-4 divide-x divide-white/5">
-                <div class="text-center space-y-1">
-                    <p class="text-[9px] font-bold tracking-widest text-gray-500 uppercase">Total Unlocks</p>
-                    <p id="user-total-supports" class="text-3xl font-black text-white font-mono">0</p>
-                </div>
-                <div class="text-center space-y-1">
-                    <p class="text-[9px] font-bold tracking-widest text-orange-400 uppercase flex items-center justify-center gap-1">
-                        <i class="fa-solid fa-fire text-orange-500 animate-pulse"></i> Live Streak
-                    </p>
-                    <p id="user-current-streak" class="text-3xl font-black bg-gradient-to-r from-orange-400 to-amber-400 bg-clip-text text-transparent font-mono">0</p>
-                </div>
-            </div>
-
-            <button onclick="resetToHome()" class="px-5 py-2.5 rounded-xl text-xs font-bold bg-white/5 border border-white/10 hover:bg-white/10 text-white transition-all cursor-pointer">
-                <i class="fa-solid fa-chevron-left mr-1.5 text-[10px]"></i> Back to Hub
-            </button>
-        </main>
     </div>
 
-    <!-- Leaderboard Standings Section Base Grid -->
     <section id="leaderboard-section" class="w-full max-w-2xl mx-auto px-6 py-12 relative z-20">
         <div class="mb-4">
             <h3 class="text-lg font-extrabold tracking-tight text-white">Leaderboard</h3>
             <p class="text-[11px] text-purple-400 font-medium">Ranked by total unlocks</p>
         </div>
 
-        <!-- Leaderboard Glass Body Layout Row Elements -->
         <div class="glass-panel rounded-xl overflow-hidden">
-            <div id="leaderboard-target" class="divide-y divide-white/[0.03]">
-                <!-- System injected rows display here dynamically -->
-            </div>
+            <div id="leaderboard-target" class="divide-y divide-white/[0.03]"></div>
         </div>
     </section>
 
-    <!-- Page Structural Bottom Template Footer Label -->
     <footer class="w-full py-6 text-center border-t border-white/5 relative z-20 text-[10px] text-gray-600">
-        Built by <span class="text-gray-500 font-medium">Shivansh Playlists</span> &middot; Support resets daily at midnight IST
+        Built by Shivansh Playlists &middot; Support resets daily at midnight IST
     </footer>
 
-    <!-- Frontend Local JavaScript Architecture Engine -->
     <script>
-        // Smooth view scroll management
+        // 🚨 CONFIGURATION: ADD YOUR API KEY HERE
+        const YOUR_GPLINKS_API_KEY = "YOUR_API_KEY_HERE";
+
         function scrollToLeaderboard() {
             document.getElementById('leaderboard-section').scrollIntoView({ behavior: 'smooth' });
         }
 
-        // Inline alert messaging rendering routines
         function showAlert(msg) {
             const el = document.getElementById('alert-zone');
             el.className = "flex bg-red-500/10 border border-red-500/20 text-red-400 rounded-xl p-3 text-xs font-medium items-center gap-2";
             el.innerHTML = `<i class="fa-solid fa-circle-exclamation text-xs"></i> <span>${msg}</span>`;
         }
 
-        // Syncs total local counts to update the main circular meter fill ratios
         function syncGlobalMeters() {
             const participants = JSON.parse(localStorage.getItem('vault_participants') || '[]');
             const globalSupportsCount = participants.reduce((acc, curr) => acc + (curr.totalCount || 0), 0);
@@ -174,24 +125,19 @@
             const circumference = 88 * 2 * Math.PI;
             circle.style.strokeDasharray = `${circumference} ${circumference}`;
             
-            // Adjust calculation based on standard goal maximum parameter threshold levels
             const percent = Math.min((globalSupportsCount / 50) * 100, 100);
             circle.style.strokeDashoffset = circumference - (percent / 100) * circumference;
             
             renderLeaderboardView(participants);
         }
 
-        // Render matching rows inside local storage layout containers
         function renderLeaderboardView(users) {
             const container = document.getElementById('leaderboard-target');
             const sorted = [...users].sort((a,b) => b.totalCount - a.totalCount);
             
             if(sorted.length === 0) {
-                // Renders placeholder rows matching screenshot height spacing parameters cleanly
                 let placeholders = '';
-                for(let i=0; i<6; i++) {
-                    placeholders += `<div class="h-[52px] bg-white/[0.01]"></div>`;
-                }
+                for(let i=0; i<6; i++) placeholders += `<div class="h-[52px] bg-white/[0.01]"></div>`;
                 container.innerHTML = placeholders;
                 return;
             }
@@ -212,8 +158,7 @@
             }).join('');
         }
 
-        // Handles click submission workflows instantly
-        function executeSupportAction() {
+        function redirectToGPLink() {
             const nameField = document.getElementById('username-input');
             const alias = nameField.value.trim();
 
@@ -223,59 +168,17 @@
                 return;
             }
 
-            let database = JSON.parse(localStorage.getItem('vault_participants') || '[]');
-            let userRecord = database.find(u => u.name.toLowerCase() === alias.toLowerCase());
+            // Create target destination pointing directly to verify.html passing username details
+            const cleanBaseUrl = window.location.origin + window.location.pathname.replace("index.html", "");
+            const destinationUrl = `${cleanBaseUrl}verify?user=${encodeURIComponent(alias)}`;
 
-            if(!userRecord) {
-                userRecord = {
-                    name: alias,
-                    totalCount: 1,
-                    streak: 1
-                };
-                database.push(userRecord);
-            } else {
-                userRecord.totalCount += 1;
-                userRecord.streak += 1;
-            }
-
-            localStorage.setItem('vault_participants', JSON.stringify(database));
-            syncGlobalMeters();
-
-            // Populate personal metrics counters into the view components
-            document.getElementById('user-total-supports').innerText = userRecord.totalCount;
-            document.getElementById('user-current-streak').innerText = userRecord.streak;
-
-            const stage1 = document.getElementById('main-vault-stage');
-            const stage2 = document.getElementById('thank-you-stage');
-
-            stage1.classList.add('opacity-0', 'scale-95');
-            setTimeout(() => {
-                stage1.classList.add('hidden');
-                stage2.classList.remove('hidden');
-                setTimeout(() => {
-                    stage2.classList.remove('opacity-0', 'scale-95');
-                }, 50);
-            }, 400);
+            // Build out official GPLinks direct redirection api string parameters
+            const gplinkRedirectUrl = `https://gplinks.in/api?api=${encodeURIComponent(YOUR_GPLINKS_API_KEY)}&url=${encodeURIComponent(destinationUrl)}`;
+            
+            // Instantly route user into the short link stream loop
+            window.location.href = gplinkRedirectUrl;
         }
 
-        // Resets display state back to home stage layouts cleanly
-        function resetToHome() {
-            const stage1 = document.getElementById('main-vault-stage');
-            const stage2 = document.getElementById('thank-you-stage');
-            document.getElementById('username-input').value = "";
-            document.getElementById('alert-zone').className = "hidden";
-
-            stage2.classList.add('opacity-0', 'scale-95');
-            setTimeout(() => {
-                stage2.classList.add('hidden');
-                stage1.classList.remove('hidden');
-                setTimeout(() => {
-                    stage1.classList.remove('opacity-0', 'scale-95');
-                }, 50);
-            }, 400);
-        }
-
-        // Initialize state variables on page load
         window.addEventListener('DOMContentLoaded', syncGlobalMeters);
     </script>
 </body>
