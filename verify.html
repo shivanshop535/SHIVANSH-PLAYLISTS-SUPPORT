@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verifying Streaks... | Shivansh Playlists</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="text-gray-200 min-h-screen flex flex-col justify-between antialiased font-['Plus_Jakarta_Sans']">
+
+    <header class="w-full max-w-7xl mx-auto px-6 py-6 flex justify-between items-center relative z-20">
+        <div class="flex items-center gap-3">
+            <img src="https://i.ibb.co/q3gD2Cm9/6226284901146149931.jpg" alt="Logo" class="w-9 h-9 rounded-xl object-cover border border-purple-500/30">
+            <div>
+                <h1 class="text-xs font-extrabold uppercase tracking-widest text-white">Shivansh Playlists</h1>
+                <p class="text-[9px] font-bold text-purple-400 tracking-wider uppercase opacity-80">Support Vault</p>
+            </div>
+        </div>
+    </header>
+
+    <div class="w-full max-w-5xl mx-auto px-6 py-4 flex-grow flex items-center justify-center relative z-10">
+        
+        <!-- Verification Screen Loader Interface Container -->
+        <main id="processing-view" class="text-center space-y-4">
+            <div class="w-12 h-12 border-4 border-purple-500/20 border-t-purple-500 rounded-full animate-spin mx-auto"></div>
+            <p class="text-sm font-semibold tracking-wide text-purple-300">Synchronizing Vault Streaks...</p>
+        </main>
+
+        <!-- Dynamic Success Confirmation Stage -->
+        <main id="thank-you-stage" class="hidden w-full max-w-md mx-auto text-center space-y-6">
+            <div class="w-16 h-16 rounded-full bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center mx-auto text-emerald-400 text-2xl animate-bounce">
+                <i class="fa-solid fa-check"></i>
+            </div>
+            
+            <div class="space-y-1">
+                <h2 class="text-2xl font-black text-white tracking-tight">Support Registered!</h2>
+                <p class="text-xs text-gray-400">Thank you for supporting <span class="text-purple-400 font-semibold font-mono" id="display-username">User</span>! Streak unlocked.</p>
+            </div>
+
+            <div class="glass-panel p-6 rounded-2xl grid grid-cols-2 gap-4 divide-x divide-white/5">
+                <div class="text-center space-y-1">
+                    <p class="text-[9px] font-bold tracking-widest text-gray-500 uppercase">Total Unlocks</p>
+                    <p id="user-total-supports" class="text-3xl font-black text-white font-mono">0</p>
+                </div>
+                <div class="text-center space-y-1">
+                    <p class="text-[9px] font-bold tracking-widest text-orange-400 uppercase flex items-center justify-center gap-1">
+                        <i class="fa-solid fa-fire text-orange-500 animate-pulse"></i> Live Streak
+                    </p>
+                    <p id="user-current-streak" class="text-3xl font-black bg-gradient-to-r from-orange-400 to-amber-400 bg-clip-text text-transparent font-mono">0</p>
+                </div>
+            </div>
+
+            <button onclick="goToDashboard()" class="px-5 py-2.5 rounded-xl text-xs font-bold bg-white/5 border border-white/10 hover:bg-white/10 text-white transition-all cursor-pointer">
+                <i class="fa-solid fa-house mr-1.5 text-[10px]"></i> Return to Dashboard
+            </button>
+        </main>
+    </div>
+
+    <footer class="w-full py-6 text-center border-t border-white/5 relative z-20 text-[10px] text-gray-600">
+        Built by Shivansh Playlists &middot; Support resets daily at midnight IST
+    </footer>
+
+    <script>
+        function goToDashboard() {
+            window.location.href = "index";
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            // Read target tracking name out from custom payload string configurations
+            const urlParams = new URLSearchParams(window.location.search);
+            const alias = urlParams.get('user');
+
+            if (!alias) {
+                // Kick out unauthorized requests without parameters back to root
+                goToDashboard();
+                return;
+            }
+
+            // Sync user changes locally inside current instance database models
+            let database = JSON.parse(localStorage.getItem('vault_participants') || '[]');
+            let userRecord = database.find(u => u.name.toLowerCase() === alias.toLowerCase());
+
+            if (!userRecord) {
+                userRecord = {
+                    name: alias,
+                    totalCount: 1,
+                    streak: 1
+                };
+                database.push(userRecord);
+            } else {
+                userRecord.totalCount += 1;
+                userRecord.streak += 1;
+            }
+
+            localStorage.setItem('vault_participants', JSON.stringify(database));
+
+            // Inject modified output states back into HTML objects
+            document.getElementById('display-username').innerText = userRecord.name;
+            document.getElementById('user-total-supports').innerText = userRecord.totalCount;
+            document.getElementById('user-current-streak').innerText = userRecord.streak;
+
+            // Transition loaders off screen
+            document.getElementById('processing-view').classList.add('hidden');
+            const targetContainer = document.getElementById('thank-you-stage');
+            targetContainer.classList.remove('hidden');
+        });
+    </script>
+</body>
+</html>
