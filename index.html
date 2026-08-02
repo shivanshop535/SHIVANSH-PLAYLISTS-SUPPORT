@@ -3,183 +3,117 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shivansh Playlists | Cyber Vault</title>
+    <title>Shivansh Playlists | Support Gateway</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body class="text-slate-200 min-h-screen flex flex-col justify-between antialiased font-['Plus_Jakarta_Sans']">
+<body class="text-slate-200 min-h-screen flex flex-col justify-center items-center antialiased font-['Plus_Jakarta_Sans'] p-4">
 
-    <!-- Top Navigation -->
-    <header class="w-full max-w-7xl mx-auto px-6 py-6 flex justify-between items-center relative z-20">
-        <div class="flex items-center gap-3 cursor-pointer" onclick="location.reload()">
-            <img src="https://i.ibb.co/q3gD2Cm9/6226284901146149931.jpg" alt="Logo" class="w-9 h-9 rounded-xl object-cover border border-cyan-500/30 shadow-[0_0_10px_rgba(6,182,212,0.2)]">
-            <div>
-                <h1 class="text-xs font-extrabold uppercase tracking-widest text-white">Shivansh Playlists</h1>
-                <p class="text-[9px] font-bold text-cyan-400 tracking-wider uppercase opacity-90">Cyber Vault</p>
+    <div class="w-full max-w-xl text-center space-y-6">
+        
+        <!-- Logo Header -->
+        <div class="inline-block relative">
+            <img src="https://i.ibb.co/q3gD2Cm9/6226284901146149931.jpg" alt="Logo" class="w-20 h-20 rounded-2xl object-cover border-2 border-purple-500/40 mx-auto brand-neon">
+        </div>
+
+        <div class="space-y-1">
+            <h1 class="text-3xl font-extrabold tracking-tight text-white">Shivansh Support System</h1>
+            <p class="text-xs text-purple-400 font-medium tracking-wide">Support daily &mdash; keep free IPTV, bots & community tools running.</p>
+        </div>
+
+        <!-- Login Container Card -->
+        <div class="premium-card p-6 md:p-8 rounded-3xl text-left space-y-6">
+            <div class="flex items-center gap-2 text-[10px] font-bold tracking-widest text-purple-400 uppercase border-b border-purple-500/10 pb-3">
+                <i class="fa-solid fa-shield-halved text-xs"></i> Login To Continue
+            </div>
+
+            <!-- Custom Mode Selection Tabs -->
+            <div class="grid grid-cols-2 gap-3">
+                <button id="tab-registered" onclick="switchAuthMode('registered')" class="tab-btn active py-4 rounded-xl flex flex-col items-center justify-center gap-2 cursor-pointer">
+                    <i class="fa-solid fa-key text-amber-400 text-lg"></i>
+                    <span class="text-xs font-bold text-white">Registered User</span>
+                </button>
+                <button id="tab-guest" onclick="switchAuthMode('guest')" class="tab-btn py-4 rounded-xl flex flex-col items-center justify-center gap-2 cursor-pointer">
+                    <i class="fa-solid fa-user-secret text-purple-400 text-lg"></i>
+                    <span class="text-xs font-bold text-slate-300">Guest User</span>
+                </button>
+            </div>
+
+            <!-- Dynamic Interactive Form Element Inputs -->
+            <div class="space-y-4">
+                <div id="input-wrapper" class="space-y-2">
+                    <!-- Controlled Dynamically via JavaScript Logic Below -->
+                </div>
+                
+                <div id="error-alert" class="hidden text-xs bg-red-500/10 border border-red-500/20 text-red-400 p-3 rounded-xl font-medium"></div>
+
+                <button onclick="handleVerificationSubmit()" class="w-full py-3.5 rounded-xl btn-purple-glow text-white font-extrabold text-xs tracking-wider uppercase cursor-pointer">
+                    <i class="fa-solid fa-fingerprint mr-1.5"></i> Verify & Continue
+                </button>
+            </div>
+
+            <div class="text-center pt-2">
+                <a href="#" class="text-[11px] text-purple-400/80 hover:text-purple-300 font-medium transition-colors">Don't have a token? Get one here &rarr;</a>
             </div>
         </div>
-        <button onclick="scrollToLeaderboard()" class="px-4 py-2 rounded-full text-[11px] font-semibold tracking-wide bg-cyan-950/20 border border-cyan-500/20 hover:bg-cyan-500/10 text-cyan-300 transition-all duration-200 cursor-pointer">
-            <i class="fa-solid fa-chart-simple mr-1.5"></i> Leaderboard
-        </button>
-    </header>
-
-    <!-- Main Content Body -->
-    <div class="w-full max-w-5xl mx-auto px-6 py-4 flex-grow flex items-center justify-center relative z-10">
-        <main class="w-full flex flex-col items-center">
-            
-            <div class="text-center max-w-2xl mx-auto mb-12 space-y-4">
-                <div class="inline-block px-3 py-1 rounded-full bg-cyan-500/5 border border-cyan-500/20 text-[10px] font-bold tracking-widest text-cyan-400 uppercase shadow-[inset_0_0_8px_rgba(6,182,212,0.1)]">
-                    System Node &middot; 50 Supports Target
-                </div>
-                <h2 class="text-3xl md:text-5xl font-black tracking-tight text-white leading-tight">
-                    Unlock Today's Drop For <br>
-                    <span class="bg-gradient-to-r from-cyan-400 via-cyan-100 to-teal-400 bg-clip-text text-transparent glow-header">Shivansh Playlists</span>
-                </h2>
-                <p class="text-slate-400 text-xs md:text-sm max-w-sm mx-auto leading-relaxed">
-                    Complete one safe verified link to boost the community matrix, log your streak, and rank on the cyber grid.
-                </p>
-            </div>
-
-            <div class="w-full max-w-3xl grid grid-cols-1 md:grid-cols-12 gap-8 items-center justify-center">
-                
-                <!-- Circular Counter Node -->
-                <div class="md:col-span-5 flex justify-center">
-                    <div class="relative w-52 h-52 rounded-full bg-slate-950/40 border border-cyan-500/10 flex items-center justify-center shadow-2xl float-card">
-                        <svg class="w-full h-full absolute inset-0">
-                            <circle cx="104" cy="104" r="88" stroke="rgba(6,182,212,0.03)" stroke-width="6" fill="transparent"/>
-                            <circle id="global-progress-circle" cx="104" cy="104" r="88" stroke="#06b6d4" stroke-width="6" fill="transparent" stroke-dasharray="552.9" stroke-dashoffset="552.9" class="progress-svg-circle" style="filter: drop-shadow(0 0 6px rgba(6,182,212,0.6));"/>
-                        </svg>
-                        <div class="text-center z-10 space-y-1">
-                            <div class="w-8 h-8 rounded-full bg-cyan-950/50 mx-auto flex items-center justify-center mb-1 border border-cyan-500/20">
-                                <i class="fa-solid fa-terminal text-xs text-cyan-400"></i>
-                            </div>
-                            <div>
-                                <span id="global-count-display" class="text-3xl font-black text-white tracking-tight font-mono">0</span>
-                                <span class="text-3xl font-black text-slate-700 tracking-tight font-mono">/50</span>
-                            </div>
-                            <p class="text-[9px] font-bold text-slate-500 tracking-widest uppercase">Global Hits</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Action Panel Card -->
-                <div class="md:col-span-7 w-full">
-                    <div class="glass-panel p-6 md:p-8 rounded-2xl relative">
-                        <div class="space-y-5">
-                            <div class="space-y-2">
-                                <label class="text-[10px] font-bold text-cyan-400/80 tracking-widest uppercase block">Identity Call Sign / User Name</label>
-                                <input id="username-input" type="text" placeholder="Enter name..." class="w-full input-field rounded-xl py-3.5 px-4 text-sm font-medium">
-                            </div>
-
-                            <div id="alert-zone" class="hidden rounded-xl p-3 text-xs border items-center gap-2"></div>
-
-                            <button onclick="navigateToGPLink()" class="w-full py-3.5 rounded-xl btn-cyan-gradient text-white font-extrabold text-xs tracking-wider uppercase cursor-pointer flex items-center justify-center gap-2">
-                                <i class="fa-solid fa-bolt text-[11px]"></i> Initialize Link Sync
-                            </button>
-                            
-                            <p class="text-[10px] text-center text-slate-500 leading-normal px-2">
-                                Complete the processing portal, and you'll return safely to confirm your live active streak data.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </main>
     </div>
 
-    <!-- Leaderboard Block Layout -->
-    <section id="leaderboard-section" class="w-full max-w-2xl mx-auto px-6 py-12 relative z-20">
-        <div class="mb-4 flex justify-between items-end">
-            <div>
-                <h3 class="text-lg font-extrabold tracking-tight text-white">Grid Standings</h3>
-                <p class="text-[11px] text-cyan-400 font-medium">Ranked dynamically by verified access hits</p>
-            </div>
-            <i class="fa-solid fa-network-wired text-cyan-500/30 text-xl"></i>
-        </div>
-
-        <div class="glass-panel rounded-xl overflow-hidden">
-            <div id="leaderboard-target" class="divide-y divide-cyan-500/5"></div>
-        </div>
-    </section>
-
-    <!-- Footer System Configuration -->
-    <footer class="w-full py-6 text-center border-t border-cyan-950/30 relative z-20 text-[10px] text-slate-600 tracking-wide">
-        Shivansh Playlists Matrix Engine &middot; Reset cycles refresh at 00:00 IST daily
-    </footer>
-
     <script>
-        function scrollToLeaderboard() {
-            document.getElementById('leaderboard-section').scrollIntoView({ behavior: 'smooth' });
-        }
+        let currentMode = 'registered';
 
-        function showAlert(msg) {
-            const el = document.getElementById('alert-zone');
-            el.className = "flex bg-amber-500/10 border border-amber-500/20 text-amber-400 rounded-xl p-3 text-xs font-medium items-center gap-2";
-            el.innerHTML = `<i class="fa-solid fa-circle-exclamation text-xs"></i> <span>${msg}</span>`;
-            el.classList.remove('hidden');
-        }
-
-        function syncGlobalMeters() {
-            const participants = JSON.parse(localStorage.getItem('vault_participants') || '[]');
-            const globalSupportsCount = participants.reduce((acc, curr) => acc + (curr.totalCount || 0), 0);
-            
-            document.getElementById('global-count-display').innerText = globalSupportsCount;
-
-            const circle = document.getElementById('global-progress-circle');
-            const circumference = 88 * 2 * Math.PI;
-            circle.style.strokeDasharray = `${circumference} ${circumference}`;
-            
-            const percent = Math.min((globalSupportsCount / 50) * 100, 100);
-            circle.style.strokeDashoffset = circumference - (percent / 100) * circumference;
-            
-            renderLeaderboardView(participants);
-        }
-
-        function renderLeaderboardView(users) {
-            const container = document.getElementById('leaderboard-target');
-            const sorted = [...users].sort((a,b) => b.totalCount - a.totalCount);
-            
-            if(sorted.length === 0) {
-                let placeholders = '';
-                for(let i=0; i<4; i++) placeholders += `<div class="h-[52px] bg-cyan-950/[0.02]"></div>`;
-                container.innerHTML = placeholders;
-                return;
-            }
-
-            container.innerHTML = sorted.map((user, idx) => {
-                return `
-                    <div class="flex items-center justify-between text-xs py-4 px-6 hover:bg-cyan-500/[0.02] transition-colors duration-150">
-                        <div class="flex items-center gap-4">
-                            <span class="text-slate-600 font-mono font-bold w-4">${idx + 1}</span>
-                            <span class="font-semibold text-white flex items-center gap-2">
-                                ${user.name} 
-                                ${user.streak > 1 ? `<span class="text-[9px] bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 px-2 py-0.5 rounded font-extrabold tracking-wide"><i class="fa-solid fa-fire text-[10px] text-cyan-400 mr-0.5"></i> ${user.streak}d</span>` : ''}
-                            </span>
-                        </div>
-                        <div class="font-mono font-bold text-cyan-400 bg-cyan-950/30 px-2.5 py-1 rounded border border-cyan-500/10">${user.totalCount}</div>
-                    </div>
+        function renderInputLayout() {
+            const container = document.getElementById('input-wrapper');
+            if (currentMode === 'registered') {
+                container.innerHTML = `
+                    <label class="text-[10px] font-bold text-slate-400 tracking-widest uppercase block">IPTV Token Access Key</label>
+                    <input id="auth-payload" type="password" placeholder="Enter your IPTV token..." class="w-full input-box rounded-xl py-3.5 px-4 text-sm font-medium">
                 `;
-            }).join('');
+            } else {
+                container.innerHTML = `
+                    <label class="text-[10px] font-bold text-slate-400 tracking-widest uppercase block">Guest Handle Name (Min 2 characters)</label>
+                    <input id="auth-payload" type="text" placeholder="e.g. John" class="w-full input-box rounded-xl py-3.5 px-4 text-sm font-medium">
+                `;
+            }
         }
 
-        function navigateToGPLink() {
-            const nameField = document.getElementById('username-input');
-            const alias = nameField.value.trim();
+        function switchAuthMode(targetMode) {
+            currentMode = targetMode;
+            document.getElementById('error-alert').classList.add('hidden');
+            
+            document.getElementById('tab-registered').classList.toggle('active', targetMode === 'registered');
+            document.getElementById('tab-guest').classList.toggle('active', targetMode === 'guest');
+            
+            renderInputLayout();
+        }
 
-            if(!alias) {
-                showAlert("Access Denied: Please enter a username to link streak logs.");
-                nameField.focus();
-                return;
+        function handleVerificationSubmit() {
+            const inputVal = document.getElementById('auth-payload').value.trim();
+            const alertBox = document.getElementById('error-alert');
+            
+            alertBox.classList.add('hidden');
+
+            if (currentMode === 'registered') {
+                if (!inputVal) {
+                    alertBox.innerText = "Error: Please input a valid IPTV token string to authenticate.";
+                    alertBox.classList.remove('hidden');
+                    return;
+                }
+                localStorage.setItem('session_user_alias', 'Registered Supporter');
+            } else {
+                if (inputVal.length < 2) {
+                    alertBox.innerText = "Validation Failed: Guest names must contain at least 2 letters.";
+                    alertBox.classList.remove('hidden');
+                    return;
+                }
+                localStorage.setItem('session_user_alias', inputVal);
             }
 
-            localStorage.setItem('pending_vault_username', alias);
             window.location.href = "https://gplinks.co/SPSUPPORTER";
         }
 
-        window.addEventListener('DOMContentLoaded', syncGlobalMeters);
+        window.addEventListener('DOMContentLoaded', () => renderInputLayout());
     </script>
 </body>
 </html>
