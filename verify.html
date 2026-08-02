@@ -11,113 +11,121 @@
 </head>
 <body class="text-slate-200 min-h-screen flex flex-col justify-center items-center antialiased font-['Plus_Jakarta_Sans'] p-4 space-y-6">
 
-    <!-- Loading State Engine Window Layout -->
+    <!-- Loading State Engine -->
     <div id="verification-loader" class="text-center space-y-3">
         <div class="w-10 h-10 border-4 border-purple-500/20 border-t-purple-500 rounded-full animate-spin mx-auto"></div>
-        <p class="text-xs font-bold tracking-widest text-purple-400 uppercase">Signing Certificate Node...</p>
+        <p class="text-xs font-bold tracking-widest text-purple-400 uppercase">Generating Award Manifest...</p>
     </div>
 
-    <!-- Main Output Certificate Canvas Layout Frame Area Block -->
+    <!-- Main Output Certificate Canvas -->
     <main id="certificate-view" class="hidden w-full max-w-md space-y-5">
         
         <div class="text-center text-[11px] font-extrabold tracking-widest text-purple-400 uppercase flex items-center justify-center gap-1.5 mb-1">
-            <span>|</span> <i class="fa-solid fa-medal text-amber-400 text-xs"></i> Your Certificate
+            <span>|</span> <i class="fa-solid fa-medal text-amber-400 text-xs"></i> Supporter Honor Roll
         </div>
 
-        <!-- Premium Certificate Box Base Card Elements Block -->
-        <div class="premium-card p-8 rounded-3xl text-center space-y-6 relative overflow-hidden border-purple-500/30">
+        <!-- Premium Certificate Box Base Card -->
+        <div id="certificate-card" class="premium-card p-8 rounded-3xl text-center space-y-6 relative overflow-hidden border-purple-500/40 bg-gradient-to-b from-purple-950/20 via-[#0a0518] to-[#0a0518]">
             
             <img src="https://i.ibb.co/q3gD2Cm9/6226284901146149931.jpg" alt="Logo" class="w-14 h-14 rounded-xl object-cover border border-purple-500/20 mx-auto">
             
             <div class="space-y-1">
-                <p class="text-[10px] font-extrabold tracking-widest text-purple-400/70 uppercase font-mono">Shivansh System Services</p>
-                <h2 class="text-2xl font-black text-white tracking-tight uppercase bg-gradient-to-r from-purple-200 via-white to-pink-200 bg-clip-text text-transparent">Support Certificate</h2>
+                <p class="text-[10px] font-extrabold tracking-widest text-purple-400/70 uppercase font-mono">Shivansh System Network Services</p>
+                <h2 class="text-2xl font-black text-white tracking-tight uppercase bg-gradient-to-r from-purple-200 via-white to-pink-200 bg-clip-text text-transparent">Official Honor Award</h2>
             </div>
 
-            <div class="inline-block px-4 py-1.5 rounded-full bg-amber-500/5 border border-amber-500/20 text-[10px] font-extrabold tracking-widest text-amber-400 uppercase">
-                <i class="fa-solid fa-star text-[9px] mr-0.5"></i> Registered Supporter <i class="fa-solid fa-star text-[9px] ml-0.5"></i>
+            <div class="inline-block px-4 py-1.5 rounded-full bg-purple-500/10 border border-purple-500/30 text-[10px] font-extrabold tracking-widest text-purple-300 uppercase">
+                👑 Premium Community Supporter 👑
             </div>
 
             <div class="py-4 space-y-1">
-                <span class="text-3xl text-amber-400">🏆</span>
+                <p class="text-[11px] text-slate-400 italic">This verification certificate is proudly presented to</p>
                 <h3 id="display-user-name" class="text-3xl font-black text-white tracking-tight pt-1">User</h3>
-                <p id="display-current-date" class="text-[11px] font-medium text-slate-400 font-mono">August 2, 2026</p>
+                <p id="display-current-date" class="text-[11px] font-medium text-purple-400 font-mono">August 2, 2026</p>
             </div>
 
-            <!-- Metrics Split Block Layout Grid Structure Container Row -->
+            <!-- Metrics Split Block Layout -->
             <div class="grid grid-cols-2 gap-3 text-left">
-                <div class="p-4 rounded-xl bg-purple-950/20 border border-purple-500/10 space-y-0.5">
+                <div class="p-4 rounded-xl bg-purple-950/30 border border-purple-500/10 space-y-0.5">
                     <p id="metric-streak" class="text-2xl font-black text-purple-400 font-mono">1</p>
-                    <p class="text-[9px] font-bold text-slate-500 tracking-widest uppercase">Day Streak</p>
+                    <p class="text-[9px] font-bold text-slate-500 tracking-widest uppercase">Active Streak</p>
                 </div>
-                <div class="p-4 rounded-xl bg-purple-950/20 border border-purple-500/10 space-y-0.5">
+                <div class="p-4 rounded-xl bg-purple-950/30 border border-purple-500/10 space-y-0.5">
                     <p id="metric-total" class="text-2xl font-black text-purple-400 font-mono">1</p>
-                    <p class="text-[9px] font-bold text-slate-500 tracking-widest uppercase">Total Supports</p>
+                    <p class="text-[9px] font-bold text-slate-500 tracking-widest uppercase">Total Contributions</p>
                 </div>
             </div>
 
             <p class="text-[10px] text-slate-500 font-mono tracking-wide pt-2 border-t border-purple-500/5">
-                Powered by Shivansh Services &middot; support.shivansh.fun
+                Authorized Node Verification Identity ID: #SHIVANSH-<span id="certificate-id">XXXX</span>
             </p>
         </div>
 
-        <!-- Reminder Alert Notification Text Grid Frame Structure Layout -->
-        <div class="premium-card p-4 rounded-2xl border-purple-500/10 flex items-start gap-3 text-left">
-            <span class="text-base pt-0.5">🙏</span>
-            <div class="space-y-0.5">
-                <h4 class="text-xs font-bold text-purple-400">Support Regularly:</h4>
-                <p class="text-[11px] text-slate-400 leading-normal">Your support means a lot to our tech team. Come tomorrow for your next support!</p>
-            </div>
-        </div>
-
-        <!-- Call Action Interface Dashboard Route Operations Elements Containers Row Grid -->
+        <!-- Share & Interaction Actions Grid Frame Layout -->
         <div class="grid grid-cols-2 gap-3 pt-2">
-            <a href="https://t.me/@ShivanshPlaylists" target="_blank" class="py-3.5 rounded-xl bg-sky-600/10 border border-sky-500/20 hover:bg-sky-500/20 text-sky-400 font-bold text-xs tracking-wider uppercase text-center transition-all flex items-center justify-center gap-2">
-                <i class="fa-brands fa-telegram text-sm"></i> Main Channel
-            </a>
-            <button onclick="navigateHome()" class="py-3.5 rounded-xl btn-purple-glow text-white font-bold text-xs tracking-wider uppercase text-center cursor-pointer flex items-center justify-center gap-2">
-                <i class="fa-solid fa-house text-[11px]"></i> Go Home
+            <button onclick="shareSupporterCertificate()" class="py-3.5 rounded-xl bg-purple-600/20 border border-purple-500/30 hover:bg-purple-600/30 text-purple-300 font-extrabold text-xs tracking-wider uppercase text-center cursor-pointer flex items-center justify-center gap-2 transition-all">
+                <i id="share-icon" class="fa-solid fa-share-nodes text-sm"></i> Share Certificate
             </button>
+            <a href="https://t.me/@ShivanshPlaylists" target="_blank" class="py-3.5 rounded-xl btn-purple-glow text-white font-extrabold text-xs tracking-wider uppercase text-center flex items-center justify-center gap-2">
+                <i class="fa-brands fa-telegram text-sm"></i> Return to Community
+            </a>
         </div>
     </main>
 
     <script>
-        function navigateHome() {
-            window.location.href = "/";
+        let globalUserName = "Supporter";
+        let globalStreak = 1;
+
+        function shareSupporterCertificate() {
+            const shareText = `🏆 *SHIVANSH PLAYLISTS HONOR ROLL* 🏆\n\nI just verified my premium supporter status on Shivansh Services!\n👤 Supporter Name: ${globalUserName}\n🔥 Current Streak: ${globalStreak} Days\n\nSupport the project here: support.shivansh.fun`;
+            const icon = document.getElementById('share-icon');
+
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Shivansh Supporter Certificate',
+                    text: shareText,
+                    url: window.location.href
+                }).catch(err => console.log(err));
+            } else {
+                // Fallback to Clipboard Copy Mode Action
+                navigator.clipboard.writeText(shareText).then(() => {
+                    icon.className = "fa-solid fa-circle-check text-emerald-400";
+                    alert("Certificate metrics compiled and copied to clipboard successfully!");
+                    setTimeout(() => {
+                        icon.className = "fa-solid fa-share-nodes text-sm";
+                    }, 2000);
+                });
+            }
         }
 
         window.addEventListener('DOMContentLoaded', () => {
             const currentAlias = localStorage.getItem('session_user_alias');
 
             if (!currentAlias) {
-                navigateHome();
+                window.location.href = "/";
                 return;
             }
 
-            // Sync database operations models 
+            // Sync user data metrics baseline checks 
             let dataLog = JSON.parse(localStorage.getItem('vault_participants') || '[]');
             let record = dataLog.find(u => u.name.toLowerCase() === currentAlias.toLowerCase());
 
-            if (!record) {
-                record = { name: currentAlias, totalCount: 1, streak: 1 };
-                dataLog.push(record);
-            } else {
-                record.totalCount += 1;
-                record.streak += 1;
-            }
+            globalUserName = currentAlias;
+            globalStreak = record ? record.streak : 1;
 
-            localStorage.setItem('vault_participants', JSON.stringify(dataLog));
+            // Generate a random visual tracking code token parameter for authenticity lookups
+            document.getElementById('certificate-id').innerText = Math.floor(1000 + Math.random() * 9000);
 
-            // Format calendar stamp configs dynamically using local options definitions arrays
+            // Print parameters cleanly onto views
+            document.getElementById('display-user-name').innerText = currentAlias;
+            document.getElementById('metric-streak').innerText = globalStreak;
+            document.getElementById('metric-total').innerText = record ? record.totalCount : 1;
+
+            // Set dynamic current date text stamp configuration
             const formatOptions = { month: 'long', day: 'numeric', year: 'numeric' };
             document.getElementById('display-current-date').innerText = new Date().toLocaleDateString('en-US', formatOptions);
 
-            // Print parameters cleanly onto views
-            document.getElementById('display-user-name').innerText = record.name;
-            document.getElementById('metric-streak').innerText = record.streak;
-            document.getElementById('metric-total').innerText = record.totalCount;
-
-            // Flip loaders off and show certificate views panel modules frame structure
+            // Toggle structural frame window visibility nodes
             document.getElementById('verification-loader').classList.add('hidden');
             document.getElementById('certificate-view').classList.remove('hidden');
         });
