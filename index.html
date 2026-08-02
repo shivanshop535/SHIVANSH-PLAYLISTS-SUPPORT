@@ -71,7 +71,7 @@
 
                             <div id="alert-zone" class="hidden rounded-xl p-3 text-xs border items-center gap-2"></div>
 
-                            <button onclick="redirectToGPLink()" class="w-full py-3.5 rounded-xl btn-primary-gradient text-white font-bold text-xs tracking-wider uppercase cursor-pointer flex items-center justify-center gap-2">
+                            <button onclick="navigateToGPLink()" class="w-full py-3.5 rounded-xl btn-primary-gradient text-white font-bold text-xs tracking-wider uppercase cursor-pointer flex items-center justify-center gap-2">
                                 <i class="fa-solid fa-bolt text-[11px] text-amber-300"></i> Unlock & Support
                             </button>
                             
@@ -102,9 +102,6 @@
     </footer>
 
     <script>
-        // 🚨 CONFIGURATION: ADD YOUR API KEY HERE
-        const YOUR_GPLINKS_API_KEY = "https://gplinks.co/SPSUPPORTER";
-
         function scrollToLeaderboard() {
             document.getElementById('leaderboard-section').scrollIntoView({ behavior: 'smooth' });
         }
@@ -158,7 +155,7 @@
             }).join('');
         }
 
-        function redirectToGPLink() {
+        function navigateToGPLink() {
             const nameField = document.getElementById('username-input');
             const alias = nameField.value.trim();
 
@@ -168,15 +165,11 @@
                 return;
             }
 
-            // Create target destination pointing directly to verify.html passing username details
-            const cleanBaseUrl = window.location.origin + window.location.pathname.replace("index.html", "");
-            const destinationUrl = `${cleanBaseUrl}verify?user=${encodeURIComponent(alias)}`;
+            // Save user target name locally so verify.html knows who returned
+            localStorage.setItem('pending_vault_username', alias);
 
-            // Build out official GPLinks direct redirection api string parameters
-            const gplinkRedirectUrl = `https://gplinks.in/api?api=${encodeURIComponent(https://gplinks.co/SPSUPPORTER)}&url=${encodeURIComponent(destinationUrl)}`;
-            
-            // Instantly route user into the short link stream loop
-            window.location.href = gplinkRedirectUrl;
+            // Redirect directly to your custom fixed GPLink
+            window.location.href = "https://gplinks.co/SPSUPPORTER";
         }
 
         window.addEventListener('DOMContentLoaded', syncGlobalMeters);
