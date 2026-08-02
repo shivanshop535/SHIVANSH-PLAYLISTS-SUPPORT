@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Verifying Streaks... | Shivansh Playlists</title>
+    <title>Verification Confirmed | Shivansh Playlists</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -23,10 +23,10 @@
 
     <div class="w-full max-w-5xl mx-auto px-6 py-4 flex-grow flex items-center justify-center relative z-10">
         
-        <!-- Verification Screen Loader Interface Container -->
+        <!-- Processing State Loader -->
         <main id="processing-view" class="text-center space-y-4">
             <div class="w-12 h-12 border-4 border-purple-500/20 border-t-purple-500 rounded-full animate-spin mx-auto"></div>
-            <p class="text-sm font-semibold tracking-wide text-purple-300">Synchronizing Vault Streaks...</p>
+            <p class="text-sm font-semibold tracking-wide text-purple-300">Syncing streak status details...</p>
         </main>
 
         <!-- Dynamic Success Confirmation Stage -->
@@ -35,11 +35,12 @@
                 <i class="fa-solid fa-check"></i>
             </div>
             
-            <div class="space-y-1">
+            <div class="space-y-1.5">
                 <h2 class="text-2xl font-black text-white tracking-tight">Support Registered!</h2>
-                <p class="text-xs text-gray-400">Thank you for supporting <span class="text-purple-400 font-semibold font-mono" id="display-username">User</span>! Streak unlocked.</p>
+                <p class="text-xs text-gray-400">Awesome job, <span class="text-purple-400 font-bold font-mono" id="display-username">User</span>! Verification is fully complete.</p>
             </div>
 
+            <!-- Dynamic Profile Metric Score Card Layout -->
             <div class="glass-panel p-6 rounded-2xl grid grid-cols-2 gap-4 divide-x divide-white/5">
                 <div class="text-center space-y-1">
                     <p class="text-[9px] font-bold tracking-widest text-gray-500 uppercase">Total Unlocks</p>
@@ -53,8 +54,13 @@
                 </div>
             </div>
 
-            <button onclick="goToDashboard()" class="px-5 py-2.5 rounded-xl text-xs font-bold bg-white/5 border border-white/10 hover:bg-white/10 text-white transition-all cursor-pointer">
-                <i class="fa-solid fa-house mr-1.5 text-[10px]"></i> Return to Dashboard
+            <!-- Next Action Reminder Notification Text -->
+            <div class="p-3.5 bg-purple-500/5 border border-purple-500/10 rounded-xl text-xs text-purple-300 font-medium">
+                <i class="fa-regular fa-calendar-days mr-1.5 text-purple-400"></i> Come tomorrow for your next support!
+            </div>
+
+            <button onclick="goToDashboard()" class="w-full sm:w-auto px-6 py-3 rounded-xl text-xs font-bold btn-primary-gradient text-white transition-all cursor-pointer shadow-md">
+                <i class="fa-solid fa-house mr-2 text-[10px]"></i> Go Home
             </button>
         </main>
     </div>
@@ -65,21 +71,20 @@
 
     <script>
         function goToDashboard() {
-            window.location.href = "index";
+            window.location.href = "/";
         }
 
         window.addEventListener('DOMContentLoaded', () => {
-            // Read target tracking name out from custom payload string configurations
-            const urlParams = new URLSearchParams(window.location.search);
-            const alias = urlParams.get('user');
+            // Retrieve the pre-saved user name from cache memory
+            const alias = localStorage.getItem('pending_vault_username');
 
             if (!alias) {
-                // Kick out unauthorized requests without parameters back to root
+                // If a user lands here without hitting support, take them home
                 goToDashboard();
                 return;
             }
 
-            // Sync user changes locally inside current instance database models
+            // Sync structural changes into local system variables
             let database = JSON.parse(localStorage.getItem('vault_participants') || '[]');
             let userRecord = database.find(u => u.name.toLowerCase() === alias.toLowerCase());
 
@@ -95,17 +100,18 @@
                 userRecord.streak += 1;
             }
 
+            // Save back updated states and clean temporary holding keys
             localStorage.setItem('vault_participants', JSON.stringify(database));
+            localStorage.removeItem('pending_vault_username');
 
-            // Inject modified output states back into HTML objects
+            // Inject metrics directly into visual components
             document.getElementById('display-username').innerText = userRecord.name;
             document.getElementById('user-total-supports').innerText = userRecord.totalCount;
             document.getElementById('user-current-streak').innerText = userRecord.streak;
 
-            // Transition loaders off screen
+            // Flip hidden display switch flags
             document.getElementById('processing-view').classList.add('hidden');
-            const targetContainer = document.getElementById('thank-you-stage');
-            targetContainer.classList.remove('hidden');
+            document.getElementById('thank-you-stage').classList.remove('hidden');
         });
     </script>
 </body>
