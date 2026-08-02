@@ -3,70 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Verification Confirmed | Shivansh Playlists</title>
+    <title>Link Matrix Verified | Shivansh Playlists</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body class="text-gray-200 min-h-screen flex flex-col justify-between antialiased font-['Plus_Jakarta_Sans']">
+<body class="text-slate-200 min-h-screen flex flex-col justify-between antialiased font-['Plus_Jakarta_Sans']">
 
+    <!-- Top Header Branding -->
     <header class="w-full max-w-7xl mx-auto px-6 py-6 flex justify-between items-center relative z-20">
         <div class="flex items-center gap-3">
-            <img src="https://i.ibb.co/q3gD2Cm9/6226284901146149931.jpg" alt="Logo" class="w-9 h-9 rounded-xl object-cover border border-purple-500/30">
+            <img src="https://i.ibb.co/q3gD2Cm9/6226284901146149931.jpg" alt="Logo" class="w-9 h-9 rounded-xl object-cover border border-cyan-500/30 shadow-[0_0_10px_rgba(6,182,212,0.2)]">
             <div>
                 <h1 class="text-xs font-extrabold uppercase tracking-widest text-white">Shivansh Playlists</h1>
-                <p class="text-[9px] font-bold text-purple-400 tracking-wider uppercase opacity-80">Support Vault</p>
+                <p class="text-[9px] font-bold text-cyan-400 tracking-wider uppercase opacity-90">Cyber Vault</p>
             </div>
         </div>
     </header>
 
+    <!-- Inner Central Dynamic States Interface Block -->
     <div class="w-full max-w-5xl mx-auto px-6 py-4 flex-grow flex items-center justify-center relative z-10">
         
-        <!-- Processing State Loader -->
+        <!-- Loading State View Layer -->
         <main id="processing-view" class="text-center space-y-4">
-            <div class="w-12 h-12 border-4 border-purple-500/20 border-t-purple-500 rounded-full animate-spin mx-auto"></div>
-            <p class="text-sm font-semibold tracking-wide text-purple-300">Syncing streak status details...</p>
+            <div class="w-10 h-10 border-4 border-cyan-500/20 border-t-cyan-400 rounded-full gpu-spin mx-auto"></div>
+            <p class="text-xs font-bold tracking-widest text-cyan-400 uppercase">Verifying Network Tokens...</p>
         </main>
 
         <!-- Dynamic Success Confirmation Stage -->
         <main id="thank-you-stage" class="hidden w-full max-w-md mx-auto text-center space-y-6">
-            <div class="w-16 h-16 rounded-full bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center mx-auto text-emerald-400 text-2xl animate-bounce">
-                <i class="fa-solid fa-check"></i>
+            <div class="w-16 h-16 rounded-full bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center mx-auto text-cyan-400 text-2xl shadow-[0_0_20px_rgba(6,182,212,0.15)] animate-bounce">
+                <i class="fa-solid fa-square-rss"></i>
             </div>
             
             <div class="space-y-1.5">
-                <h2 class="text-2xl font-black text-white tracking-tight">Support Registered!</h2>
-                <p class="text-xs text-gray-400">Awesome job, <span class="text-purple-400 font-bold font-mono" id="display-username">User</span>! Verification is fully complete.</p>
+                <h2 class="text-2xl font-black text-white tracking-tight">Access Token Verified!</h2>
+                <p class="text-xs text-slate-400">System check clear. Welcome back, <span class="text-cyan-400 font-extrabold font-mono" id="display-username">User</span>.</p>
             </div>
 
             <!-- Dynamic Profile Metric Score Card Layout -->
-            <div class="glass-panel p-6 rounded-2xl grid grid-cols-2 gap-4 divide-x divide-white/5">
+            <div class="glass-panel p-6 rounded-2xl grid grid-cols-2 gap-4 divide-x divide-cyan-500/10">
                 <div class="text-center space-y-1">
-                    <p class="text-[9px] font-bold tracking-widest text-gray-500 uppercase">Total Unlocks</p>
+                    <p class="text-[9px] font-bold tracking-widest text-slate-500 uppercase">Total Logged Hits</p>
                     <p id="user-total-supports" class="text-3xl font-black text-white font-mono">0</p>
                 </div>
                 <div class="text-center space-y-1">
-                    <p class="text-[9px] font-bold tracking-widest text-orange-400 uppercase flex items-center justify-center gap-1">
-                        <i class="fa-solid fa-fire text-orange-500 animate-pulse"></i> Live Streak
+                    <p class="text-[9px] font-bold tracking-widest text-cyan-400 uppercase flex items-center justify-center gap-1">
+                        <i class="fa-solid fa-fire text-cyan-400 animate-pulse"></i> Core Streak
                     </p>
-                    <p id="user-current-streak" class="text-3xl font-black bg-gradient-to-r from-orange-400 to-amber-400 bg-clip-text text-transparent font-mono">0</p>
+                    <p id="user-current-streak" class="text-3xl font-black bg-gradient-to-r from-cyan-400 to-teal-200 bg-clip-text text-transparent font-mono">0</p>
                 </div>
             </div>
 
-            <!-- Next Action Reminder Notification Text -->
-            <div class="p-3.5 bg-purple-500/5 border border-purple-500/10 rounded-xl text-xs text-purple-300 font-medium">
-                <i class="fa-regular fa-calendar-days mr-1.5 text-purple-400"></i> Come tomorrow for your next support!
+            <!-- Lock Notification Panel -->
+            <div class="p-3.5 bg-cyan-500/5 border border-cyan-500/10 rounded-xl text-xs text-cyan-300/90 font-semibold tracking-wide shadow-[inset_0_0_10px_rgba(6,182,212,0.05)]">
+                <i class="fa-solid fa-lock-open mr-1.5 text-cyan-400"></i> Come tomorrow for your next support!
             </div>
 
-            <button onclick="goToDashboard()" class="w-full sm:w-auto px-6 py-3 rounded-xl text-xs font-bold btn-primary-gradient text-white transition-all cursor-pointer shadow-md">
-                <i class="fa-solid fa-house mr-2 text-[10px]"></i> Go Home
+            <button onclick="goToDashboard()" class="w-full sm:w-auto px-8 py-3 rounded-xl text-xs font-extrabold btn-cyan-gradient text-white tracking-wider uppercase cursor-pointer">
+                <i class="fa-solid fa-house-signal mr-2 text-[10px]"></i> Go Home
             </button>
         </main>
     </div>
 
-    <footer class="w-full py-6 text-center border-t border-white/5 relative z-20 text-[10px] text-gray-600">
-        Built by Shivansh Playlists &middot; Support resets daily at midnight IST
+    <!-- Bottom Matrix Footer -->
+    <footer class="w-full py-6 text-center border-t border-cyan-950/30 relative z-20 text-[10px] text-slate-600 tracking-wide">
+        Shivansh Playlists Matrix Engine &middot; Reset cycles refresh at 00:00 IST daily
     </footer>
 
     <script>
@@ -75,16 +78,16 @@
         }
 
         window.addEventListener('DOMContentLoaded', () => {
-            // Retrieve the pre-saved user name from cache memory
+            // Read target username record token out from browser local storage structures
             const alias = localStorage.getItem('pending_vault_username');
 
             if (!alias) {
-                // If a user lands here without hitting support, take them home
+                // Instantly boot users back out if no key payload is cached
                 goToDashboard();
                 return;
             }
 
-            // Sync structural changes into local system variables
+            // Sync node dataset metrics into array indexes
             let database = JSON.parse(localStorage.getItem('vault_participants') || '[]');
             let userRecord = database.find(u => u.name.toLowerCase() === alias.toLowerCase());
 
@@ -100,16 +103,16 @@
                 userRecord.streak += 1;
             }
 
-            // Save back updated states and clean temporary holding keys
+            // Flush temporary runtime placeholder records and store mutations
             localStorage.setItem('vault_participants', JSON.stringify(database));
             localStorage.removeItem('pending_vault_username');
 
-            // Inject metrics directly into visual components
+            // Map variables cleanly back out to view elements
             document.getElementById('display-username').innerText = userRecord.name;
             document.getElementById('user-total-supports').innerText = userRecord.totalCount;
             document.getElementById('user-current-streak').innerText = userRecord.streak;
 
-            // Flip hidden display switch flags
+            // Trigger smooth visibility UI transition toggle layers
             document.getElementById('processing-view').classList.add('hidden');
             document.getElementById('thank-you-stage').classList.remove('hidden');
         });
