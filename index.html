@@ -92,31 +92,40 @@
         }
 
         function handleVerificationSubmit() {
-            const inputVal = document.getElementById('auth-payload').value.trim();
-            const alertBox = document.getElementById('error-alert');
-            
-            alertBox.classList.add('hidden');
+    const inputVal = document.getElementById('auth-payload').value.trim();
+    const alertBox = document.getElementById('error-alert');
+    
+    alertBox.classList.add('hidden');
 
-            if (currentMode === 'registered') {
-                if (!inputVal) {
-                    alertBox.innerText = "Error: Please input a valid IPTV token string to authenticate.";
-                    alertBox.classList.remove('hidden');
-                    return;
-                }
-                localStorage.setItem('session_user_alias', 'Registered Supporter');
-            } else {
-                if (inputVal.length < 2) {
-                    alertBox.innerText = "Validation Failed: Guest names must contain at least 2 letters.";
-                    alertBox.classList.remove('hidden');
-                    return;
-                }
-                localStorage.setItem('session_user_alias', inputVal);
-            }
-
-            window.location.href = "https://gplinks.co/SPSUPPORTER";
+    if (currentMode === 'registered') {
+        // 1. Check if the input field is completely empty
+        if (!inputVal) {
+            alertBox.innerText = "Error: Please input a valid IPTV token string to authenticate.";
+            alertBox.classList.remove('hidden');
+            return;
         }
+        
+        // 2. STRIKT VALIDATION: Check if token starts with 'SP-' prefix
+        if (!inputVal.toUpperCase().startsWith('SP-')) {
+            alertBox.innerText = "Invalid Token Format: Registered tokens must begin with the 'SP-' prefix (e.g., SP-XXXX-XXXX).";
+            alertBox.classList.remove('hidden');
+            return;
+        }
+        
+        localStorage.setItem('session_user_alias', 'Registered Supporter');
+    } else {
+        // Guest user fallback validation logic
+        if (inputVal.length < 2) {
+            alertBox.innerText = "Validation Failed: Guest names must contain at least 2 letters.";
+            alertBox.classList.remove('hidden');
+            return;
+        }
+        localStorage.setItem('session_user_alias', inputVal);
+    }
 
-        window.addEventListener('DOMContentLoaded', () => renderInputLayout());
+    // SUCCESSFUL LOGIN: Route directly to their personal achievement hub
+    window.location.href = "verify.html";
+}
     </script>
 </body>
 </html>
