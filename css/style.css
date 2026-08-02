@@ -12,6 +12,100 @@
   --font-body: "Manrope", sans-serif;
 }
 
+@keyframes cyber-pulse {
+    0%, 100% { opacity: 0.7; transform: scale(1); filter: drop-shadow(0 0 8px rgba(6, 182, 212, 0.5)); }
+    50% { opacity: 1; transform: scale(1.02); filter: drop-shadow(0 0 20px rgba(6, 182, 212, 0.8)); }
+}
+
+@keyframes float-slow {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-6px); }
+}
+
+@keyframes spin-sync {
+    to { transform: rotate(360deg); }
+}
+
+body {
+    background-color: #030712;
+    background-image: 
+        linear-gradient(rgba(6, 182, 212, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(6, 182, 212, 0.03) 1px, transparent 1px),
+        radial-gradient(circle at 50% -20%, #083344 0%, transparent 60%),
+        radial-gradient(circle at 90% 40%, rgba(6, 182, 212, 0.05) 0%, transparent 40%);
+    background-size: 32px 32px, 32px 32px, 100% 100%, 100% 100%;
+    background-attachment: fixed;
+}
+
+/* Glassmorphism Panel with Cyan Trim */
+.glass-panel {
+    background: rgba(3, 10, 22, 0.75);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(6, 182, 212, 0.15);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), inset 0 1px 1px rgba(255, 255, 255, 0.05);
+    will-change: transform, border-color;
+    transition: border-color 0.3s ease;
+}
+
+.glass-panel:hover {
+    border-color: rgba(6, 182, 212, 0.3);
+}
+
+/* Premium Cyan Input Glows */
+.input-field {
+    background: rgba(4, 17, 34, 0.8);
+    border: 1px solid rgba(6, 182, 212, 0.25);
+    color: #fff;
+    will-change: box-shadow, border-color;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.input-field:focus {
+    border-color: rgba(6, 182, 212, 0.8);
+    box-shadow: 0 0 16px rgba(6, 182, 212, 0.35);
+    background: rgba(6, 26, 51, 0.9);
+    outline: none;
+}
+
+/* Ultra Neon Button styling */
+.btn-cyan-gradient {
+    background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
+    box-shadow: 0 0 15px rgba(6, 182, 212, 0.3);
+    will-change: transform, filter, box-shadow;
+    transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.2s ease, filter 0.2s ease;
+}
+
+.btn-cyan-gradient:hover {
+    filter: brightness(1.15);
+    box-shadow: 0 0 25px rgba(6, 182, 212, 0.6);
+    transform: translateY(-2px);
+}
+
+.btn-cyan-gradient:active {
+    transform: translateY(0px);
+}
+
+/* Smooth Circular Progress Engine */
+.progress-svg-circle {
+    will-change: stroke-dashoffset;
+    transition: stroke-dashoffset 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: rotate(-90deg);
+    transform-origin: 50% 50%;
+}
+
+.glow-header {
+    animation: cyber-pulse 4s infinite ease-in-out;
+}
+
+.float-card {
+    animation: float-slow 5s infinite ease-in-out;
+}
+
+.gpu-spin {
+    animation: spin-sync 1s linear infinite;
+}
+
 body {
     background-color: #0c051a;
     background-image: 
