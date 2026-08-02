@@ -92,30 +92,31 @@
         }
 
         function handleVerificationSubmit() {
-    const inputVal = document.getElementById('auth-payload').value.trim();
-    const alertBox = document.getElementById('error-alert');
-    
-    alertBox.classList.add('hidden');
+            const inputVal = document.getElementById('auth-payload').value.trim();
+            const alertBox = document.getElementById('error-alert');
+            
+            alertBox.classList.add('hidden');
 
-    if (currentMode === 'registered') {
-        if (!inputVal) {
-            alertBox.innerText = "Error: Please input a valid IPTV token string to authenticate.";
-            alertBox.classList.remove('hidden');
-            return;
-        }
-        localStorage.setItem('session_user_alias', 'Registered Supporter');
-    } else {
-        if (inputVal.length < 2) {
-            alertBox.innerText = "Validation Failed: Guest names must contain at least 2 letters.";
-            alertBox.classList.remove('hidden');
-            return;
-        }
-        localStorage.setItem('session_user_alias', inputVal);
-    }
+            if (currentMode === 'registered') {
+                if (!inputVal) {
+                    alertBox.innerText = "Error: Please input a valid IPTV token string to authenticate.";
+                    alertBox.classList.remove('hidden');
+                    return;
+                }
+                localStorage.setItem('session_user_alias', 'Registered Supporter');
+            } else {
+                if (inputVal.length < 2) {
+                    alertBox.innerText = "Validation Failed: Guest names must contain at least 2 letters.";
+                    alertBox.classList.remove('hidden');
+                    return;
+                }
+                localStorage.setItem('session_user_alias', inputVal);
+            }
 
-    // SUCCESSFUL LOGIN: Route directly to their personal achievement hub
-    window.location.href = "verify.html";
-}
+            window.location.href = "https://gplinks.co/SPSUPPORTER";
+        }
+
+        window.addEventListener('DOMContentLoaded', () => renderInputLayout());
     </script>
 </body>
 </html>
