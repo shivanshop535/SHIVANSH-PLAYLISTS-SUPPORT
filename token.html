@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Free Token | Shivansh Playlists</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="text-slate-300 antialiased font-['Plus_Jakarta_Sans'] min-h-screen flex flex-col justify-between">
+
+    <!-- Top Navigation Bar -->
+    <nav class="w-full border-b border-purple-500/10 bg-[#060214]/60 backdrop-blur-md sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <img src="https://i.ibb.co/q3gD2Cm9/6226284901146149931.jpg" alt="Logo" class="w-9 h-9 rounded-lg border border-purple-500/30">
+                <span class="text-white font-extrabold tracking-tight text-sm">Shivansh Playlists</span>
+            </div>
+            <div class="flex items-center gap-6 text-xs font-semibold text-slate-400">
+                <a href="/" class="hover:text-purple-400 transition-colors">Login Gateway</a>
+                <a href="#features" class="hover:text-purple-400 transition-colors hidden md:inline">Features</a>
+                <a href="#faq" class="hover:text-purple-400 transition-colors hidden md:inline">FAQ</a>
+                <a href="https://t.me/@ShivanshPlaylists" target="_blank" class="px-3.5 py-2 rounded-lg bg-purple-600/10 border border-purple-500/20 text-purple-400 hover:bg-purple-600/20 transition-all">
+                    <i class="fa-brands fa-telegram mr-1"></i> Telegram
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Header / Token Generation Module Container Section -->
+    <header class="max-w-4xl mx-auto px-4 pt-16 pb-12 text-center space-y-8 relative">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-500/10 border border-purple-500/20 text-[10px] font-bold text-purple-400 uppercase tracking-widest">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> Service Operational
+        </div>
+        
+        <h1 class="text-4xl md:text-6xl font-black text-white tracking-tight leading-tight">
+            Watch Everything.<br>On <span class="bg-gradient-to-r from-purple-400 via-fuchsia-400 to-pink-400 bg-clip-text text-transparent">Every Single Screen.</span>
+        </h1>
+        
+        <p class="text-sm md:text-base text-slate-400 max-w-xl mx-auto font-medium leading-relaxed">
+            Get high premium tier validation keys instantly. Gain unrestricted secure community entry nodes to stream music, TV playlists, and bot environments smoothly.
+        </p>
+
+        <!-- Generation Engine Box Card Element Frame -->
+        <div class="max-w-xl mx-auto premium-card p-6 md:p-8 rounded-3xl text-left space-y-6 mt-8">
+            <div class="flex items-center justify-between border-b border-purple-500/10 pb-4">
+                <div class="flex items-center gap-2 text-[10px] font-bold tracking-widest text-purple-400 uppercase">
+                    <i class="fa-solid fa-wand-magic-sparkles text-xs"></i> Token Engine Hub
+                </div>
+                <span class="text-[10px] font-mono font-bold text-slate-500">v4.0.0-Stable</span>
+            </div>
+
+            <div class="space-y-4">
+                <button onclick="triggerTokenGenerationSequence()" id="btn-generate" class="w-full py-4 rounded-xl btn-purple-glow text-white font-extrabold text-xs tracking-wider uppercase cursor-pointer">
+                    <i class="fa-solid fa-key mr-1.5"></i> Get Real-Time Token
+                </button>
+
+                <!-- Hidden Generator Loading State Engine Interface Block Container -->
+                <div id="gen-loader" class="hidden py-4 text-center space-y-2 bg-purple-950/10 border border-purple-500/10 rounded-xl">
+                    <div class="w-6 h-6 border-2 border-purple-500/20 border-t-purple-500 rounded-full animate-spin mx-auto"></div>
+                    <p class="text-[10px] font-bold tracking-widest text-purple-400 uppercase">Validating System Handshake...</p>
+                </div>
+
+                <!-- Generated Token Value Card Output Container Module -->
+                <div id="token-box" class="hidden premium-card p-4 rounded-xl border-purple-500/30 flex items-center justify-between gap-3 bg-purple-950/10">
+                    <div class="overflow-hidden space-y-1">
+                        <span class="text-[9px] font-bold text-slate-500 tracking-widest uppercase block">Your Generated Token Code</span>
+                        <code id="token-string-value" class="text-xs font-mono font-bold text-emerald-400 tracking-wide block truncate">SP-XXXX-XXXX</code>
+                    </div>
+                    <button onclick="copyGeneratedTokenToClipboard()" class="p-3 bg-purple-500/10 hover:bg-purple-500/20 border border-purple-500/20 text-purple-400 rounded-lg text-xs cursor-pointer transition-colors active:scale-95" title="Copy Token">
+                        <i id="copy-icon" class="fa-regular fa-copy"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- System Operations Counters Dashboard Metrics Strip Row Grid Layout -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 pt-8 max-w-3xl mx-auto border-t border-purple-500/10">
+            <div>
+                <p class="text-2xl font-black text-white font-mono tracking-tight">2,800+</p>
+                <p class="text-[10px] font-bold uppercase tracking-wider text-slate-500">Live Channels</p>
+            </div>
+            <div>
+                <p class="text-2xl font-black text-white font-mono tracking-tight">99.9%</p>
+                <p class="text-[10px] font-bold uppercase tracking-wider text-slate-500">Uptime Metric</p>
+            </div>
+            <div>
+                <p class="text-2xl font-black text-white font-mono tracking-tight">Instant</p>
+                <p class="text-[10px] font-bold uppercase tracking-wider text-slate-500">Key Generation</p>
+            </div>
+            <div>
+                <p class="text-2xl font-black text-white font-mono tracking-tight">24/7</p>
+                <p class="text-[10px] font-bold uppercase tracking-wider text-slate-500">Global Monitoring</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Key Core Highlights Service Matrix Feature Blocks Grids Section Area -->
+    <section id="features" class="max-w-6xl mx-auto px-4 py-16 space-y-12">
+        <div class="text-center space-y-2">
+            <span class="text-[10px] font-bold text-purple-400 tracking-widest uppercase">Premium Infrastructure</span>
+            <h2 class="text-2xl md:text-3xl font-extrabold text-white tracking-tight">Built for Serious Media Consumers</h2>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-6">
+            <div class="premium-card p-6 rounded-2xl space-y-3">
+                <div class="w-10 h-10 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400"><i class="fa-solid fa-tv"></i></div>
+                <h3 class="text-sm font-bold text-white">Curated Playlists</h3>
+                <p class="text-xs text-slate-400 leading-relaxed">Stream massive lists completely free of standard buffering bottlenecks securely.</p>
+            </div>
+            <div class="premium-card p-6 rounded-2xl space-y-3">
+                <div class="w-10 h-10 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400"><i class="fa-solid fa-bolt-lightning"></i></div>
+                <h3 class="text-sm font-bold text-white">Ultra-Fast Infrastructure</h3>
+                <p class="text-xs text-slate-400 leading-relaxed">Highly responsive tokens configured instantly dynamically across multi-servers logs.</p>
+            </div>
+            <div class="premium-card p-6 rounded-2xl space-y-3">
+                <div class="w-10 h-10 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400"><i class="fa-solid fa-key"></i></div>
+                <h3 class="text-sm font-bold text-white">Secure Access Model</h3>
+                <p class="text-xs text-slate-400 leading-relaxed">Protects your profile stats leaderboard positions utilizing custom auth keys tokens.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Workflow Instructions Sequential Steps Guide Section Module Block Layout -->
+    <section class="max-w-5xl mx-auto px-4 py-12 border-t border-purple-500/10 text-center space-y-10">
+        <h2 class="text-xl font-bold text-slate-400 tracking-tight">How it works: Just 3 simple steps and start watching</h2>
+        
+        <div class="grid md:grid-cols-3 gap-6 text-left">
+            <div class="space-y-2">
+                <span class="text-xs font-black font-mono text-purple-500 bg-purple-500/10 px-2 py-1 rounded">01</span>
+                <h3 class="text-xs font-bold text-white uppercase tracking-wider pt-1">Get Your Token</h3>
+                <p class="text-xs text-slate-400 leading-relaxed">Click generate button above to generate a unique entry key credential block instantly.</p>
+            </div>
+            <div class="space-y-2">
+                <span class="text-xs font-black font-mono text-purple-500 bg-purple-500/10 px-2 py-1 rounded">02</span>
+                <h3 class="text-xs font-bold text-white uppercase tracking-wider pt-1">Paste Key to Login</h3>
+                <p class="text-xs text-slate-400 leading-relaxed">Input the value into the Registered User slot box entry node directly on gateway homepage.</p>
+            </div>
+            <div class="space-y-2">
+                <span class="text-xs font-black font-mono text-purple-500 bg-purple-500/10 px-2 py-1 rounded">03</span>
+                <h3 class="text-xs font-bold text-white uppercase tracking-wider pt-1">Enjoy Premium Features</h3>
+                <p class="text-xs text-slate-400 leading-relaxed">Get valid configurations profiles, certificates boards ranks updates smoothly without fees.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Accordion FAQ Questions System Component Layout Module Section -->
+    <section id="faq" class="max-w-3xl mx-auto px-4 py-16 space-y-8 w-full">
+        <div class="text-center space-y-2">
+            <span class="text-[10px] font-bold text-purple-400 tracking-widest uppercase">Answering Doubts</span>
+            <h2 class="text-2xl font-extrabold text-white tracking-tight">Common Questions Answered</h2>
+        </div>
+
+        <div class="space-y-3">
+            <!-- Accordion Element 1 -->
+            <div class="premium-card rounded-xl overflow-hidden transition-all duration-300">
+                <button onclick="toggleAccordionItem(this)" class="w-full p-5 text-left flex items-center justify-between font-bold text-xs md:text-sm text-white hover:bg-white/[0.02] transition-colors cursor-pointer">
+                    <span>What is this authentication token key?</span>
+                    <i class="fa-solid fa-chevron-down text-slate-500 text-xs transform transition-transform duration-200"></i>
+                </button>
+                <div class="max-h-0 opacity-0 overflow-hidden transition-all duration-300 ease-in-out bg-white/[0.01]">
+                    <p class="p-5 text-xs text-slate-400 leading-relaxed border-t border-purple-500/5">
+                        It is a unique cryptographic security string key passed to confirm you are an active human community member before linking directly to shared resources dashboards.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Accordion Element 2 -->
+            <div class="premium-card rounded-xl overflow-hidden transition-all duration-300">
+                <button onclick="toggleAccordionItem(this)" class="w-full p-5 text-left flex items-center justify-between font-bold text-xs md:text-sm text-white hover:bg-white/[0.02] transition-colors cursor-pointer">
+                    <span>Is obtaining the security key completely free?</span>
+                    <i class="fa-solid fa-chevron-down text-slate-500 text-xs transform transition-transform duration-200"></i>
+                </button>
+                <div class="max-h-0 opacity-0 overflow-hidden transition-all duration-300 ease-in-out bg-white/[0.01]">
+                    <p class="p-5 text-xs text-slate-400 leading-relaxed border-t border-purple-500/5">
+                        Yes, 100% free. The system engine does not request billing fees, subscriptions, or financial verification parameters at any checkpoint.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Accordion Element 3 -->
+            <div class="premium-card rounded-xl overflow-hidden transition-all duration-300">
+                <button onclick="toggleAccordionItem(this)" class="w-full p-5 text-left flex items-center justify-between font-bold text-xs md:text-sm text-white hover:bg-white/[0.02] transition-colors cursor-pointer">
+                    <span>How many tokens can I generate?</span>
+                    <i class="fa-solid fa-chevron-down text-slate-500 text-xs transform transition-transform duration-200"></i>
+                </button>
+                <div class="max-h-0 opacity-0 overflow-hidden transition-all duration-300 ease-in-out bg-white/[0.01]">
+                    <p class="p-5 text-xs text-slate-400 leading-relaxed border-t border-purple-500/5">
+                        There are no strict caps. However, each individual profile node only requires one single active verified token block session to maintain state logs smoothly.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer System Attributions Block Base Element Line -->
+    <footer class="w-full border-t border-purple-500/10 py-8 bg-[#04010d] text-center space-y-3">
+        <div class="flex flex-wrap items-center justify-center gap-6 text-[10px] font-bold tracking-wider text-slate-500 uppercase">
+            <a href="/" class="hover:text-purple-400">Login Gateway</a>
+            <span>&middot;</span>
+            <a href="https://t.me/@ShivanshPlaylists" target="_blank" class="hover:text-purple-400">Main Channel Link</a>
+            <span>&middot;</span>
+            <a href="#faq" class="hover:text-purple-400">Support Center</a>
+        </div>
+        <p class="text-[10px] font-mono text-slate-600">
+            &copy; 2026 Shivansh System Services. All rights reserved globally.
+        </p>
+    </footer>
+
+    <!-- Interactive Page Engine Scripts Operations Functions Module -->
+    <script>
+        function triggerTokenGenerationSequence() {
+            const btn = document.getElementById('btn-generate');
+            const loader = document.getElementById('gen-loader');
+            const tokenBox = document.getElementById('token-box');
+
+            btn.classList.add('hidden');
+            tokenBox.classList.add('hidden');
+            loader.classList.remove('hidden');
+
+            // Simulate server network authorization calculations response timeout delay latency 
+            setTimeout(() => {
+                loader.classList.add('hidden');
+                
+                // Create random cryptographic sample token characters string keys array
+                const blockA = Math.random().toString(36).substring(2, 6).toUpperCase();
+                const blockB = Math.random().toString(36).substring(2, 6).toUpperCase();
+                const cleanTokenResult = `SP-${blockA}-${blockB}`;
+                
+                document.getElementById('token-string-value').innerText = cleanTokenResult;
+                tokenBox.classList.remove('hidden');
+                btn.classList.remove('hidden');
+            }, 1200);
+        }
+
+        function copyGeneratedTokenToClipboard() {
+            const tokenText = document.getElementById('token-string-value').innerText;
+            navigator.clipboard.writeText(tokenText).then(() => {
+                const icon = document.getElementById('copy-icon');
+                
+                icon.className = "fa-solid fa-check text-emerald-400";
+                setTimeout(() => {
+                    icon.className = "fa-regular fa-copy";
+                }, 2000);
+            });
+        }
+
+        function toggleAccordionItem(element) {
+            const wrapperCard = element.parentElement;
+            const bodyDiv = wrapperCard.querySelector('div');
+            const indicatorIcon = element.querySelector('i');
+            
+            if (bodyDiv.style.maxHeight && bodyDiv.style.maxHeight !== '0px') {
+                bodyDiv.style.maxHeight = '0px';
+                bodyDiv.style.opacity = '0';
+                indicatorIcon.style.transform = 'rotate(0deg)';
+            } else {
+                // Close all opened containers modules layout components cleanups first
+                document.querySelectorAll('#faq .premium-card div').forEach(el => {
+                    el.style.maxHeight = '0px';
+                    el.style.opacity = '0';
+                });
+                document.querySelectorAll('#faq .premium-card button i').forEach(ico => {
+                    ico.style.transform = 'rotate(0deg)';
+                });
+
+                // Expand clicked asset
+                bodyDiv.style.maxHeight = bodyDiv.scrollHeight + 'px';
+                bodyDiv.style.opacity = '1';
+                indicatorIcon.style.transform = 'rotate(180deg)';
+            }
+        }
+    </script>
+</body>
+</html>
